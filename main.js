@@ -104,7 +104,7 @@ function startMouseTimeout(scrollTop) {
     mouseTimeout = setTimeout(function () {
       navbar.classList.add("navbar-hidden");
       mouseTimeout = null;
-    }, 1000);
+    }, 1500);
   }
 }
 
