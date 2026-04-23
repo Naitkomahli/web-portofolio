@@ -10,7 +10,7 @@
   for (let i = 0; i < 18; i++) {
     const p    = document.createElement("span");
     p.className = "loader-particle";
-    const left = Math.random() * 100;
+    const left = Math.random() * 90; // max 90% to avoid edge overflow on mobile
     const dur  = (4 + Math.random() * 6).toFixed(1) + "s";
     const del  = (Math.random() * 5).toFixed(1) + "s";
     p.style.cssText = `left:${left}vw;--dur:${dur};--delay:${del};width:${4 + Math.random() * 6}px;height:${4 + Math.random() * 6}px;`;
@@ -104,7 +104,7 @@ function startMouseTimeout(scrollTop) {
     mouseTimeout = setTimeout(function () {
       navbar.classList.add("navbar-hidden");
       mouseTimeout = null;
-    }, 1500);
+    }, 2000);
   }
 }
 
