@@ -2,10 +2,328 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ===== LOADING SCREEN ===== */
+
+#loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #0d0d0d;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  overflow: hidden;
+}
+
+#loading-screen.fade-out {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
+/* Floating particles */
+.loader-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  animation: floatUp var(--dur, 6s) linear var(--delay, 0s) infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(110vh) scale(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+}
+
+/* Terminal Window */
+.terminal-window {
+  background: #1a1a1a;
+  border-radius: 14px;
+  width: min(520px, 92vw);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.07),
+    0 30px 80px rgba(0, 0, 0, 0.7),
+    0 0 60px rgba(99, 102, 241, 0.12);
+  overflow: hidden;
+  animation: terminalAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes terminalAppear {
+  from { opacity: 0; transform: scale(0.85) translateY(30px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Terminal Title Bar */
+.terminal-bar {
+  background: #2a2a2a;
+  padding: 11px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-dot.red   { background: #ff5f57; }
+.terminal-dot.yellow { background: #febc2e; }
+.terminal-dot.green  { background: #28c840; }
+
+.terminal-title {
+  flex: 1;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  margin-right: 28px;
+}
+
+/* Terminal Body */
+.terminal-body {
+  padding: 22px 24px 20px;
+  min-height: 190px;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 13.5px;
+  line-height: 2;
+  color: #e2e8f0;
+}
+
+.terminal-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-height: 27px;
+}
+
+.terminal-prompt {
+  color: #818cf8;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.terminal-cmd {
+  color: #7dd3fc;
+}
+
+.terminal-output {
+  color: #86efac;
+  font-size: 12.5px;
+}
+
+.terminal-output.dim {
+  color: rgba(134, 239, 172, 0.55);
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: #818cf8;
+  border-radius: 2px;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Progress Bar */
+.loader-progress-wrap {
+  margin-top: 24px;
+  width: min(520px, 92vw);
+}
+
+.loader-progress-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  font-family: 'Fira Code', monospace;
+  margin-bottom: 8px;
+}
+
+.loader-progress-bar {
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.loader-progress-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #818cf8, #38bdf8, #34d399);
+  transition: width 0.4s ease;
+  box-shadow: 0 0 12px rgba(129, 140, 248, 0.5);
+}
+
+/* Emoji bounce */
+.loader-emoji {
+  font-size: 36px;
+  margin-bottom: 18px;
+  animation: emojiFloat 2s ease-in-out infinite;
+  display: block;
+  text-align: center;
+}
+
+@keyframes emojiFloat {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50%       { transform: translateY(-10px) rotate(5deg); }
+}
+
+/* Prevent scrolling while loading */
+body.loading {
+  overflow: hidden;
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide In From Left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide In From Right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide In From Bottom */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale In Animation */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Bounce In Animation */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Scroll Animation Classes */
+.scroll-fade {
+  opacity: 0;
+}
+
+.scroll-slide-left {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+
+.scroll-slide-right {
+  opacity: 0;
+  transform: translateX(60px);
+}
+
+.scroll-slide-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.scroll-scale {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.scroll-bounce {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* Stagger Effect */
+.scroll-stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.scroll-stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.scroll-stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.scroll-stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.scroll-stagger-5 {
+  animation-delay: 0.5s;
+}
+
+.scroll-stagger-6 {
+  animation-delay: 0.6s;
+}
+
 .blur-nav {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+  transition:
+    transform 0.4s ease-in-out,
+    opacity 0.4s ease-in-out;
 }
 
 .navbar-hidden {
@@ -21,8 +339,6 @@ html {
   box-shadow: 0 0 15px rgba(220, 53, 69, 0.4);
   color: #dc3545 !important;
 }
-
-
 
 #home {
   margin-top: -90px; /* Sesuaikan angka ini untuk sedikit menarik konten ke atas */
@@ -57,7 +373,7 @@ html {
 
 /* Slider custom scrollbar */
 .slider-container::-webkit-scrollbar {
-  height: 8px; 
+  height: 8px;
 }
 
 .slider-container::-webkit-scrollbar-track {
@@ -76,7 +392,9 @@ html {
 
 /* Contact Section Custom Styles */
 .contact-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   border-radius: 15px;
   background-color: #fff;
 }
@@ -157,7 +475,7 @@ html {
 }
 
 .timeline-item::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 14px;
   height: 14px;
