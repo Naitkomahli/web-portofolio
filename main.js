@@ -1,95 +1,189 @@
 // ===== LOADING SCREEN =====
 (function () {
-  const terminalBody = document.getElementById("terminal-body");
-  const fill         = document.getElementById("loader-fill");
-  const pctLabel     = document.getElementById("loader-pct");
-  const emoji        = document.getElementById("loader-emoji");
+  const canvas = document.getElementById("space-canvas");
+  const ctx = canvas.getContext("2d");
+  const introText = document.getElementById("starwars-intro");
+  const loaderContent = document.getElementById("loader-content");
+  const fill = document.getElementById("loader-fill");
+  const pctLabel = document.getElementById("loader-pct");
+  const statusLabel = document.getElementById("loader-status");
 
-  /* ---- Floating Particles ---- */
-  const emojis = ["✨", "💻", "🤖", "📊", "⚡", "🎨", "🔥", "🧠"];
-  for (let i = 0; i < 18; i++) {
-    const p    = document.createElement("span");
-    p.className = "loader-particle";
-    const left = Math.random() * 90; // max 90% to avoid edge overflow on mobile
-    const dur  = (4 + Math.random() * 6).toFixed(1) + "s";
-    const del  = (Math.random() * 5).toFixed(1) + "s";
-    p.style.cssText = `left:${left}vw;--dur:${dur};--delay:${del};width:${4 + Math.random() * 6}px;height:${4 + Math.random() * 6}px;`;
-    if (Math.random() > 0.6) {
-      p.textContent    = emojis[Math.floor(Math.random() * emojis.length)];
-      p.style.fontSize = "14px";
-      p.style.background = "transparent";
-    }
-    document.getElementById("loading-screen").insertBefore(p, document.getElementById("loading-screen").firstChild);
+  // ---- 1. Canvas Starfield Simulation ----
+  let width, height;
+  function resizeCanvas() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener("resize", resizeCanvas);
+
+  const numStars = 150;
+  const stars = [];
+  const maxDepth = 1000;
+
+  for (let i = 0; i < numStars; i++) {
+    stars.push({
+      x: (Math.random() - 0.5) * 1600,
+      y: (Math.random() - 0.5) * 1600,
+      z: Math.random() * maxDepth,
+      size: 0.5 + Math.random() * 1.5,
+      color: Math.random() > 0.45 ? "#38bdf8" : "#ffffff"
+    });
   }
 
-  /* ---- Typing Sequence ---- */
-  const steps = [
-    { type: "cmd", text: "npm install portfolio@latest", delay: 0 },
-    { type: "out", text: "✔ Loading modules...",         delay: 600,  dim: true },
-    { type: "out", text: "✔ Bundling assets...",         delay: 1100, dim: true },
-    { type: "cmd", text: "git clone ilham/projects",    delay: 1600 },
-    { type: "out", text: "✔ 4 projects cloned",         delay: 2200 },
-    { type: "cmd", text: "python train_model.py --fast", delay: 2700 },
-    { type: "out", text: "✔ Model ready  acc: 97.3%",   delay: 3300 },
-    { type: "cmd", text: "serve portfolio --open",       delay: 3800 },
-    { type: "out", text: "🎉 Ready at http://localhost:3000", delay: 4400 },
-  ];
+  let baseSpeed = 1.2;
+  let currentSpeed = baseSpeed;
+  let warpFactor = 1.0;
 
-  const emojiFrames = ["🚀", "💻", "🤖", "🎨", "🧠", "✨", "🔥", "🚀"];
-  let eIdx = 0;
-  const emojiInterval = setInterval(() => {
-    eIdx = (eIdx + 1) % emojiFrames.length;
-    emoji.textContent = emojiFrames[eIdx];
-  }, 600);
-
-  /* ---- Progress Bar ---- */
-  const totalDuration = 5100;
-  const startTime     = performance.now();
-  let raf;
-
-  function animateProgress(now) {
-    const pct = Math.min(100, Math.round(((now - startTime) / totalDuration) * 100));
-    fill.style.width      = pct + "%";
-    pctLabel.textContent  = pct + "%";
-    if (pct < 100) raf = requestAnimationFrame(animateProgress);
-  }
-  raf = requestAnimationFrame(animateProgress);
-
-  /* ---- Render Terminal Line ---- */
-  function addLine(step) {
-    const line      = document.createElement("div");
-    line.className  = "terminal-line";
-    if (step.type === "cmd") {
-      line.innerHTML = `<span class="terminal-prompt">❯</span><span class="terminal-cmd">${step.text}</span>`;
+  function animateStars() {
+    if (warpFactor > 5) {
+      // Long warp trails in hyperdrive
+      ctx.fillStyle = "rgba(0, 2, 5, 0.22)";
     } else {
-      line.innerHTML = `<span class="terminal-output${step.dim ? " dim" : ""}">${step.text}</span>`;
+      ctx.fillStyle = "#000205";
     }
-    terminalBody.appendChild(line);
-    terminalBody.scrollTop = terminalBody.scrollHeight;
+    ctx.fillRect(0, 0, width, height);
+
+    // Cosmic glow radial overlay
+    const grad = ctx.createRadialGradient(width/2, height/2, 10, width/2, height/2, Math.max(width, height));
+    grad.addColorStop(0, "rgba(8, 17, 30, 0.45)");
+    grad.addColorStop(1, "rgba(0, 0, 0, 0.96)");
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, width, height);
+
+    currentSpeed = baseSpeed * warpFactor;
+
+    stars.forEach(star => {
+      // Previous coordinate projection for stretch line drawing
+      const prevX = (star.x / star.z) * (width * 0.7) + width / 2;
+      const prevY = (star.y / star.z) * (height * 0.7) + height / 2;
+
+      // Bring star closer
+      star.z -= currentSpeed;
+
+      // Reset star if out of screen bounds or too close
+      if (star.z <= 0) {
+        star.z = maxDepth;
+        star.x = (Math.random() - 0.5) * 1600;
+        star.y = (Math.random() - 0.5) * 1600;
+        return;
+      }
+
+      // New projected coordinates
+      const px = (star.x / star.z) * (width * 0.7) + width / 2;
+      const py = (star.y / star.z) * (height * 0.7) + height / 2;
+
+      if (px >= 0 && px <= width && py >= 0 && py <= height) {
+        const factor = (1 - star.z / maxDepth);
+        const alpha = Math.min(1, factor * 1.5);
+        const radius = star.size * factor * 2;
+
+        ctx.beginPath();
+        if (warpFactor > 2) {
+          // Star Wars Hyperdrive streak lines
+          ctx.strokeStyle = star.color === "#38bdf8" ? `rgba(56, 189, 248, ${alpha})` : `rgba(255, 255, 255, ${alpha})`;
+          ctx.lineWidth = radius * 1.3;
+          ctx.moveTo(prevX, prevY);
+          ctx.lineTo(px, py);
+          ctx.stroke();
+        } else {
+          // Slow floating stars
+          ctx.fillStyle = star.color === "#38bdf8" ? `rgba(56, 189, 248, ${alpha})` : `rgba(255, 255, 255, ${alpha})`;
+          ctx.arc(px, py, radius, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    });
+
+    requestAnimationFrame(animateStars);
+  }
+  requestAnimationFrame(animateStars);
+
+  // ---- 2. Preloader Lifecycle Orchestration ----
+
+  // Phase 1: Star Wars Intro Text
+  setTimeout(() => {
+    introText.classList.add("active");
+  }, 150);
+
+  setTimeout(() => {
+    introText.classList.remove("active");
+    introText.classList.add("fade-away");
+  }, 1700);
+
+  setTimeout(() => {
+    introText.remove();
+    // Phase 2: Lightsaber Progress Bar
+    loaderContent.classList.remove("hidden");
+    startProgressAnimation();
+  }, 2400);
+
+  function startProgressAnimation() {
+    const totalDuration = 2800; // Snappy progress speed
+    const startTime = performance.now();
+    let rafId;
+
+    const statusTexts = [
+      { maxPct: 20, text: "Initializing kyber crystal power core..." },
+      { maxPct: 45, text: "Aligning magnetic plasma channels..." },
+      { maxPct: 70, text: "Scanning space sector for hazards..." },
+      { maxPct: 90, text: "Calculating hyperdrive jump coordinates..." },
+      { maxPct: 99, text: "Engaging hyperdrive navi-computer..." },
+      { maxPct: 100, text: "Punch it, Chewie!" }
+    ];
+
+    function animateProgress(now) {
+      const elapsed = now - startTime;
+      const pct = Math.min(100, Math.round((elapsed / totalDuration) * 100));
+
+      fill.style.width = pct + "%";
+      pctLabel.textContent = pct + "%";
+
+      // Update themed progress message
+      const currentStatus = statusTexts.find(s => pct <= s.maxPct);
+      if (currentStatus) {
+        statusLabel.textContent = currentStatus.text;
+      }
+
+      if (pct < 100) {
+        rafId = requestAnimationFrame(animateProgress);
+      } else {
+        cancelAnimationFrame(rafId);
+        triggerHyperdriveJump();
+      }
+    }
+    rafId = requestAnimationFrame(animateProgress);
   }
 
-  steps.forEach((step) => {
-    setTimeout(() => addLine(step), step.delay);
-  });
+  // Phase 3 & 4: Hyperdrive Warp & Exit Reveal
+  function triggerHyperdriveJump() {
+    // Rapidly ramp up speed warpFactor
+    let startWarp = performance.now();
+    let warpDuration = 900;
 
-  /* ---- Dismiss Loading Screen ---- */
-  function dismiss() {
-    cancelAnimationFrame(raf);
-    clearInterval(emojiInterval);
-    fill.style.width                                     = "100%";
-    pctLabel.textContent                                 = "100%";
-    pctLabel.previousElementSibling.textContent          = "Done!";
-    emoji.textContent                                    = "🎉";
+    function warpRamp(now) {
+      const elapsed = now - startWarp;
+      const progress = Math.min(1, elapsed / warpDuration);
+      
+      // Easing function to punch the speed up dramatically at the end
+      warpFactor = 1.0 + Math.pow(progress, 3) * 34.0; 
 
-    setTimeout(() => {
-      const loadingScreen = document.getElementById("loading-screen");
-      loadingScreen.classList.add("fade-out");
-      document.body.classList.remove("loading");
-      setTimeout(() => loadingScreen.remove(), 750);
-    }, 400);
+      if (progress < 1) {
+        requestAnimationFrame(warpRamp);
+      } else {
+        // Exit loading screen
+        const loadingScreen = document.getElementById("loading-screen");
+        loadingScreen.classList.add("fade-out");
+        document.body.classList.remove("loading");
+
+        setTimeout(() => {
+          loadingScreen.remove();
+          window.removeEventListener("resize", resizeCanvas);
+        }, 800);
+      }
+    }
+    requestAnimationFrame(warpRamp);
   }
-
-  setTimeout(dismiss, totalDuration + 200);
 })();
 
 

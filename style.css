@@ -45,128 +45,299 @@ body.loading {
   inset: 0;
   width: 100%;
   max-width: 100vw;
-  background: #0d0d0d;
+  height: 100vh;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  background: #000;
   overflow: hidden;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 #loading-screen.fade-out {
   opacity: 0;
-  transform: scale(1.04);
+  transform: scale(1.08);
   pointer-events: none;
 }
 
-/* Floating particles */
-.loader-particle {
+/* HTML5 Starfield Canvas */
+#space-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: radial-gradient(circle at center, #08111e 0%, #000205 100%);
+  transition: opacity 1s ease;
+}
+
+/* Star Wars Intro Text style */
+.sw-intro-text {
+  position: absolute;
+  z-index: 10;
+  color: #4bd5ee;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(1.1rem, 3.5vw, 1.8rem);
+  font-weight: 500;
+  text-align: left;
+  line-height: 1.6;
+  max-width: 85%;
+  letter-spacing: 0.5px;
+  opacity: 0;
+  transform: scale(0.95);
+  pointer-events: none;
+  text-shadow: 0 0 10px rgba(75, 213, 238, 0.4);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out, filter 1s ease-in-out;
+  filter: blur(2px);
+}
+
+.sw-intro-text.active {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+.sw-intro-text.fade-away {
+  opacity: 0;
+  transform: scale(1.05);
+  filter: blur(4px);
+}
+
+/* Space Loader Interface (Header & Lightsaber) */
+.loader-content-wrap {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  padding: 20px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  transition: opacity 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.loader-content-wrap.hidden {
+  opacity: 0;
+  transform: translateY(30px) scale(0.92);
+  pointer-events: none;
+}
+
+/* Star Wars Header */
+.sw-header {
+  text-align: center;
+  margin-bottom: 45px;
+  animation: swHeaderAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes swHeaderAppear {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.sw-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.8rem, 5.5vw, 3rem);
+  letter-spacing: 5px;
+  margin: 0;
+  line-height: 1;
+  background: linear-gradient(135deg, #ffffff 40%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.4));
+}
+
+.sw-subtitle {
+  font-family: 'Fira Code', monospace;
+  font-size: clamp(0.7rem, 2vw, 0.85rem);
+  letter-spacing: 5px;
+  color: #38bdf8;
+  margin-top: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+/* Lightsaber Progress Assembly */
+.lightsaber-assembly {
+  width: 90%;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.lightsaber-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+/* Sleek CSS Lightsaber Hilt */
+.lightsaber-hilt {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+  filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.6));
+}
+
+.hilt-part {
+  height: 100%;
+  background: linear-gradient(to bottom, #e2e8f0 0%, #94a3b8 50%, #475569 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.hilt-part.emitter {
+  width: 9px;
+  height: 24px;
+  border-radius: 3px 0 0 3px;
+  border-right: 2px solid #1e293b;
+  background: linear-gradient(to bottom, #cbd5e1 0%, #64748b 50%, #0f172a 100%);
+}
+
+.hilt-part.emitter-ring {
+  width: 3px;
+  height: 26px;
+  background: #0f172a;
+}
+
+.hilt-part.metal-neck {
+  width: 12px;
+  height: 16px;
+  background: linear-gradient(to bottom, #f1f5f9 0%, #cbd5e1 50%, #64748b 100%);
+}
+
+.hilt-part.black-grip {
+  width: 35px;
+  height: 20px;
+  background: #0f172a;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 1px;
+  border-left: 1px solid #475569;
+  border-right: 1px solid #475569;
+}
+
+.hilt-part.black-grip .ridge {
+  width: 3px;
+  height: 85%;
+  background: linear-gradient(to bottom, #94a3b8 0%, #0f172a 100%);
+  border-radius: 1px;
+}
+
+.hilt-part.control-box {
+  width: 10px;
+  height: 22px;
+  position: relative;
+  background: linear-gradient(to bottom, #f1f5f9 0%, #94a3b8 50%, #475569 100%);
+}
+
+.hilt-part.control-box .button-blue {
   position: absolute;
   width: 4px;
   height: 4px;
+  background: #38bdf8;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  animation: floatUp var(--dur, 6s) linear var(--delay, 0s) infinite;
+  top: 3px;
+  left: 3px;
+  box-shadow: 0 0 4px #38bdf8;
 }
 
-@keyframes floatUp {
-  0%   { transform: translateY(110vh) scale(0); opacity: 0; }
-  10%  { opacity: 1; }
-  90%  { opacity: 0.6; }
-  100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+.hilt-part.pommel {
+  width: 7px;
+  height: 23px;
+  border-radius: 0 5px 5px 0;
+  background: linear-gradient(to bottom, #cbd5e1 0%, #64748b 50%, #0f172a 100%);
 }
 
-/* Terminal Window */
-.terminal-window {
-  background: #1a1a1a;
-  border-radius: 14px;
-  width: min(520px, 92vw);
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.07),
-    0 30px 80px rgba(0, 0, 0, 0.7),
-    0 0 60px rgba(99, 102, 241, 0.12);
-  overflow: hidden;
-  animation: terminalAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-@keyframes terminalAppear {
-  from { opacity: 0; transform: scale(0.85) translateY(30px); }
-  to   { opacity: 1; transform: scale(1) translateY(0); }
-}
-
-.terminal-bar {
-  background: #2a2a2a;
-  padding: 11px 16px;
+/* Lightsaber Blade Container & Glowing Blade */
+.lightsaber-blade-container {
+  height: 10px;
+  flex-grow: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 0 100px 100px 0;
+  position: relative;
+  left: -2px; /* overlap with emitter to prevent gap */
+  overflow: visible;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
-  gap: 8px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.terminal-dot { width: 12px; height: 12px; border-radius: 50%; }
-.terminal-dot.red    { background: #ff5f57; }
-.terminal-dot.yellow { background: #febc2e; }
-.terminal-dot.green  { background: #28c840; }
-
-.terminal-title {
-  flex: 1;
-  text-align: center;
-  font-size: 12px;
-  color: rgba(255,255,255,0.4);
-  font-family: 'SF Mono', 'Fira Code', monospace;
-  margin-right: 28px;
+.lightsaber-blade {
+  height: 8px;
+  width: 0%; /* animated dynamically by JS */
+  background: #ffffff;
+  border-radius: 0 100px 100px 0;
+  position: relative;
+  box-shadow: 
+    0 0 6px #ffffff,
+    0 0 12px #38bdf8,
+    0 0 24px #0284c7,
+    0 0 40px rgba(3, 105, 161, 0.6);
+  transition: width 0.12s linear;
 }
 
-.terminal-body {
-  padding: 22px 24px 20px;
-  min-height: 190px;
-  font-family: 'Fira Code', 'Courier New', monospace;
-  font-size: 13.5px;
-  line-height: 2;
-  color: #e2e8f0;
+/* Sparkle hum effect on the tip of the blade */
+.lightsaber-blade::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #38bdf8, 0 0 20px #0284c7;
+  animation: bladePulse 0.1s infinite alternate;
 }
 
-.terminal-line { display: flex; align-items: baseline; gap: 8px; min-height: 27px; }
-.terminal-prompt { color: #818cf8; flex-shrink: 0; user-select: none; }
-.terminal-cmd    { color: #7dd3fc; }
-.terminal-output { color: #86efac; font-size: 12.5px; }
-.terminal-output.dim { color: rgba(134, 239, 172, 0.55); }
-
-.terminal-cursor {
-  display: inline-block;
-  width: 8px; height: 15px;
-  background: #818cf8;
-  border-radius: 2px;
-  vertical-align: middle;
-  animation: blink 1s step-end infinite;
+@keyframes bladePulse {
+  0% { transform: translateY(-50%) scale(0.85); opacity: 0.8; }
+  100% { transform: translateY(-50%) scale(1.2); opacity: 1; }
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0; }
+/* Loader Progress Typography */
+.loader-progress-wrap {
+  width: 90%;
+  max-width: 400px;
+  margin-top: 5px;
 }
 
-.loader-progress-wrap  { margin-top: 24px; width: min(520px, 92vw); }
-.loader-progress-label { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.35); font-family: 'Fira Code', monospace; margin-bottom: 8px; }
-.loader-progress-bar   { height: 4px; background: rgba(255,255,255,0.08); border-radius: 99px; overflow: hidden; }
-.loader-progress-fill  { height: 100%; width: 0%; border-radius: 99px; background: linear-gradient(90deg, #818cf8, #38bdf8, #34d399); transition: width 0.4s ease; box-shadow: 0 0 12px rgba(129,140,248,0.5); }
-
-.loader-emoji {
-  font-size: 36px;
-  margin-bottom: 18px;
-  animation: emojiFloat 2s ease-in-out infinite;
-  display: block;
-  text-align: center;
+.loader-progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Fira Code', monospace;
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
+  color: var(--text-muted);
 }
 
-@keyframes emojiFloat {
-  0%, 100% { transform: translateY(0) rotate(-5deg); }
-  50%       { transform: translateY(-10px) rotate(5deg); }
+#loader-status {
+  color: rgba(226, 232, 240, 0.85);
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
-body.loading { overflow: hidden; }
+#loader-pct {
+  color: #38bdf8;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(56, 189, 248, 0.4);
+}
 
 
 /* ===== SCROLL ANIMATIONS ===== */
@@ -407,6 +578,8 @@ body.loading { overflow: hidden; }
   margin: -30px 0 -50px 0 !important;
   scroll-padding-left: 20px;
   overflow-x: auto;
+  overflow-y: hidden !important; /* Prevents the container from capturing vertical scroll gestures */
+  touch-action: pan-y pan-x;     /* Ensures vertical swipes scroll the page while horizontal swipes scroll the slider */
 }
 
 .slider-container::after {
