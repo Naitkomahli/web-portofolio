@@ -572,25 +572,46 @@ body.loading {
   color: var(--text-muted) !important;
 }
 
-.slider-container {
-  padding: 30px 20px 50px 20px !important;
-  /* removed negative horizontal margins — they were causing page-width overflow on mobile */
-  margin: -30px 0 -50px 0 !important;
-  scroll-padding-left: 20px;
-  overflow-x: auto;
-  overflow-y: hidden !important; /* Prevents the container from capturing vertical scroll gestures */
-  touch-action: pan-y pan-x;     /* Ensures vertical swipes scroll the page while horizontal swipes scroll the slider */
+/* ===== FILTER BUTTONS ===== */
+.filter-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text-muted);
+  padding: 0.5rem 1.25rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
-.slider-container::after {
-  content: "";
-  padding-right: 20px;
+.filter-btn:hover {
+  border-color: rgba(129, 140, 248, 0.4);
+  color: var(--text-primary);
+  background: rgba(129, 140, 248, 0.08);
 }
 
-.slider-container::-webkit-scrollbar       { height: 6px; }
-.slider-container::-webkit-scrollbar-track { background: var(--bg-card); border-radius: 10px; }
-.slider-container::-webkit-scrollbar-thumb { background: rgba(129,140,248,0.4); border-radius: 10px; }
-.slider-container::-webkit-scrollbar-thumb:hover { background: rgba(129,140,248,0.7); }
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-sky));
+  border-color: transparent;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(129, 140, 248, 0.35);
+}
+
+/* ===== PROJECT ITEM TRANSITIONS ===== */
+.project-item {
+  transition: all 0.4s ease;
+}
+
+.project-item.hidden {
+  display: none;
+}
+
+.project-item.filtering {
+  opacity: 0;
+  transform: scale(0.85);
+  pointer-events: none;
+}
 
 .project-btn {
   width: 42px;

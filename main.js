@@ -296,3 +296,39 @@ animatedElements.forEach((element) => {
     observer.observe(element);
   }
 });
+
+// ===== PROJECT FILTER =====
+document.addEventListener("DOMContentLoaded", function () {
+  const filterBtns = document.querySelectorAll("#project-filters .filter-btn");
+  const projectItems = document.querySelectorAll("#project-grid .project-item");
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      // Update active button
+      filterBtns.forEach((b) => b.classList.remove("active"));
+      this.classList.add("active");
+
+      const filterValue = this.getAttribute("data-filter");
+
+      projectItems.forEach((item) => {
+        const category = item.getAttribute("data-category");
+
+        // Add filtering class for transition effect
+        item.classList.add("filtering");
+
+        setTimeout(() => {
+          if (filterValue === "all" || category === filterValue) {
+            item.classList.remove("hidden");
+            // Remove filtering class after a brief delay to allow transition
+            requestAnimationFrame(() => {
+              item.classList.remove("filtering");
+            });
+          } else {
+            item.classList.add("hidden");
+            item.classList.remove("filtering");
+          }
+        }, 300);
+      });
+    });
+  });
+});
