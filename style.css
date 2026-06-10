@@ -542,6 +542,60 @@ body.loading {
   font-size: 0.9rem;
 }
 
+/* Skill Group */
+.skill-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.skill-group-tag {
+  display: inline-block;
+  background: rgba(129, 140, 248, 0.12);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  padding: 0.35rem 1.1rem;
+  border-radius: 100px;
+}
+
+/* Skill Pill */
+.skill-pill {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.55rem 1.1rem 0.55rem 0.8rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.skill-pill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(129, 140, 248, 0.35);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3), 0 0 12px rgba(129, 140, 248, 0.06);
+}
+
+.skill-pill-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.skill-pill-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
 
 /* ===== PROJECTS SECTION ===== */
 #projects {
