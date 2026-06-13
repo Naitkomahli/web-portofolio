@@ -744,6 +744,23 @@ body.loading {
   color: #fff;
 }
 
+/* Outline Accent Button (for Download CV) */
+.btn-outline-accent {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-accent:hover {
+  background: rgba(129, 140, 248, 0.12);
+  color: #fff;
+  border-color: var(--accent-sky);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(129, 140, 248, 0.2);
+}
+
 .contact-card {
   background-color: var(--bg-card) !important;
   border: 1px solid var(--border) !important;
