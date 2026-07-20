@@ -187,53 +187,15 @@
 })();
 
 
-// ===== NAVBAR AUTOHIDE =====
-let lastScrollTop    = 0;
-let scrollUpDistance = 0;
-let mouseTimeout     = null;
-const navbar         = document.querySelector(".navbar");
-
-function startMouseTimeout(scrollTop) {
-  if (scrollTop > 100 && !mouseTimeout) {
-    mouseTimeout = setTimeout(function () {
-      navbar.classList.add("navbar-hidden");
-      mouseTimeout = null;
-    }, 2000);
-  }
-}
+// ===== NAVBAR SHRINK ON SCROLL =====
+const navbar = document.querySelector(".navbar");
 
 window.addEventListener("scroll", function () {
-  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (scrollTop > lastScrollTop) {
-    // Scrolling down
-    if (scrollTop > 100) {
-      navbar.classList.add("navbar-hidden");
-    }
-    scrollUpDistance = 0;
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  if (scrollTop > 60) {
+    navbar.classList.add("navbar-shrink");
   } else {
-    // Scrolling up
-    scrollUpDistance += lastScrollTop - scrollTop;
-    if (scrollUpDistance > 150 || scrollTop <= 50) {
-      navbar.classList.remove("navbar-hidden");
-      startMouseTimeout(scrollTop);
-    }
-  }
-  lastScrollTop = Math.max(scrollTop, 0);
-});
-
-// Deteksi posisi Mouse
-document.addEventListener("mousemove", function (e) {
-  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-  if (e.clientY <= 120) {
-    navbar.classList.remove("navbar-hidden");
-    clearTimeout(mouseTimeout);
-    mouseTimeout = null;
-  } else {
-    if (!navbar.classList.contains("navbar-hidden")) {
-      startMouseTimeout(scrollTop);
-    }
+    navbar.classList.remove("navbar-shrink");
   }
 });
 
