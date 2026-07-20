@@ -425,17 +425,6 @@ body.loading {
   pointer-events: none;
 }
 
-/* Shrink navbar after scrolling down for a compact look */
-.navbar-shrink {
-  padding-top: 0.35rem !important;
-  padding-bottom: 0.35rem !important;
-  transition: padding 0.3s ease-in-out;
-}
-
-.navbar-shrink .nav-link-dark {
-  font-size: 0.9rem;
-}
-
 /* Mobile toggler icon → white */
 .navbar-toggler {
   border-color: var(--border) !important;

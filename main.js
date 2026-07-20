@@ -187,15 +187,44 @@
 })();
 
 
-// ===== NAVBAR SHRINK ON SCROLL =====
+// ===== NAVBAR AUTOHIDE =====
 const navbar = document.querySelector(".navbar");
+let lastScrollTop = 0;
+let scrollUpDistance = 0;
+let mouseTimeout = null;
+
+function startMouseTimeout(scrollTop) {
+  if (scrollTop > 100 && !mouseTimeout) {
+    mouseTimeout = setTimeout(function () {
+      navbar.classList.add("navbar-hidden");
+    }, 2000);
+  }
+}
 
 window.addEventListener("scroll", function () {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  if (scrollTop > 60) {
-    navbar.classList.add("navbar-shrink");
-  } else {
-    navbar.classList.remove("navbar-shrink");
+  if (scrollTop > lastScrollTop && scrollTop > 100) {
+    navbar.classList.add("navbar-hidden");
+    scrollUpDistance = 0;
+  } else if (scrollTop < lastScrollTop) {
+    scrollUpDistance += lastScrollTop - scrollTop;
+    if (scrollUpDistance > 150 || scrollTop <= 50) {
+      navbar.classList.remove("navbar-hidden");
+      startMouseTimeout(scrollTop);
+    }
+  }
+  lastScrollTop = scrollTop;
+});
+
+window.addEventListener("mousemove", function (e) {
+  if (e.clientY <= 120) {
+    navbar.classList.remove("navbar-hidden");
+    if (mouseTimeout) {
+      clearTimeout(mouseTimeout);
+      mouseTimeout = null;
+    }
+  } else if (!navbar.classList.contains("navbar-hidden")) {
+    startMouseTimeout(window.pageYOffset || document.documentElement.scrollTop);
   }
 });
 
