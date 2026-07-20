@@ -93,26 +93,27 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <nav class="navbar-nav ms-auto">
-              <a href="#about" class="nav-link nav-link-dark fw-semibold mx-2"
+              <a href="#about" class="nav-link nav-link-dark fw-semibold mx-2" data-i18n="nav-about"
                 >About</a
               >
-              <a href="#skills" class="nav-link nav-link-dark fw-semibold mx-2"
+              <a href="#skills" class="nav-link nav-link-dark fw-semibold mx-2" data-i18n="nav-skills"
                 >Skills</a
               >
               <a
                 href="#experience"
-                class="nav-link nav-link-dark fw-semibold mx-2"
+                class="nav-link nav-link-dark fw-semibold mx-2" data-i18n="nav-experience"
                 >Experience</a
               >
               <a
                 href="#projects"
-                class="nav-link nav-link-dark fw-semibold mx-2"
+                class="nav-link nav-link-dark fw-semibold mx-2" data-i18n="nav-projects"
                 >Projects</a
               >
-              <a href="#contact" class="nav-link nav-link-dark fw-semibold mx-2"
+              <a href="#contact" class="nav-link nav-link-dark fw-semibold mx-2" data-i18n="nav-contact"
                 >Contact</a
               >
             </nav>
+            <button id="lang-toggle" class="lang-toggle-btn ms-2" title="Switch Language">EN</button>
           </div>
         </div>
       </header>
@@ -127,10 +128,10 @@
         <div class="row align-items-center">
           <div class="col-md-7 text-center text-md-start scroll-slide-left">
             <h1 class="display-4 fw-bold">Ilham Oktian Ramadhan</h1>
-            <p class="lead fw-semibold">
+            <p class="lead fw-semibold" data-i18n="hero-subtitle">
               Junior Frontend Developer | Machine Learning Enthusiast
             </p>
-            <p>
+            <p data-i18n="hero-desc">
               Crafting elegant, functional, and user-centric web experiences
               with a focus on clean code.
             </p>
@@ -153,19 +154,19 @@
         <div class="row justify-content-center">
           <div class="col-lg-9 scroll-slide-up">
             <div class="text-center mb-5 scroll-fade">
-              <span class="section-label">Discover</span>
-              <h2 class="display-6 fw-bold mt-2">About Me</h2>
+              <span class="section-label" data-i18n="about-label">Discover</span>
+              <h2 class="display-6 fw-bold mt-2" data-i18n="about-title">About Me</h2>
               <div class="accent-line mt-3"></div>
             </div>
 
             <p
-              class="lead fw-semibold mb-3 text-center scroll-fade scroll-stagger-1"
+              class="lead fw-semibold mb-3 text-center scroll-fade scroll-stagger-1" data-i18n="about-lead"
             >
               I am a Junior Frontend Developer and Machine Learning Enthusiast
               based in Indonesia.
             </p>
             <p
-              class="mb-4 text-center scroll-fade scroll-stagger-2"
+              class="mb-4 text-center scroll-fade scroll-stagger-2" data-i18n="about-text"
               style="line-height: 1.8; color: var(--text-muted)"
             >
               I have a strong passion for building elegant, functional, and
@@ -196,7 +197,7 @@
                     d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
                   />
                 </svg>
-                Download CV
+                <span data-i18n="about-dl-btn">Download CV</span>
               </a>
             </div>
           </div>
@@ -226,13 +227,13 @@
                   d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"
                 />
               </svg>
-              Education
+              <span data-i18n="exp-education">Education</span>
             </h4>
             <div class="timeline-item scroll-slide-left scroll-stagger-1">
               <div
                 class="d-flex flex-column flex-sm-row justify-content-between mb-2"
               >
-                <h5 class="fw-bold mb-1">
+                <h5 class="fw-bold mb-1" data-i18n="exp-edu-degree">
                   Bachelor of Informatics Engineering
                 </h5>
                 <span class="badge badge-dark-custom pt-2 align-self-start"
@@ -249,8 +250,8 @@
                 Universitas Dian Nuswantoro
               </h6>
               <p class="text-muted">
-                Currently pursuing a bachelor's degree. Consistently maintaining
-                strong academic performance with a GPA of
+                <span data-i18n="exp-edu-desc-pre">Currently pursuing a bachelor's degree. Consistently maintaining
+                strong academic performance with a GPA of</span>
                 <strong style="color: var(--accent)">3.72 / 4.00</strong>.
               </p>
             </div>
@@ -274,14 +275,14 @@
                   d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"
                 />
               </svg>
-              Experience
+              <span data-i18n="exp-experience">Experience</span>
             </h4>
 
             <div class="timeline-item scroll-slide-left scroll-stagger-1">
               <div
                 class="d-flex flex-column flex-sm-row justify-content-between mb-2"
               >
-                <h5 class="fw-bold mb-1">Web Developer Intern</h5>
+                <h5 class="fw-bold mb-1" data-i18n="exp-job1-title">Web Developer Intern</h5>
                 <span class="badge badge-dark-custom pt-2 align-self-start"
                   >Apr 2025 - May 2025</span
                 >
@@ -290,15 +291,15 @@
                 Dinas Komunikasi dan Informatika (Diskominfo)
               </h6>
               <ul class="text-muted">
-                <li>
+                <li data-i18n="exp-job1-desc1">
                   Designed and built the "Aspirasi Masyarakat" web application
                   end-to-end (Fullstack) to facilitate citizen reporting.
                 </li>
-                <li>
+                <li data-i18n="exp-job1-desc2">
                   Developed a responsive frontend interface and robust backend
                   data management system.
                 </li>
-                <li>
+                <li data-i18n="exp-job1-desc3">
                   Executed independent feature testing to ensure flawless data
                   input flow and user experience.
                 </li>
@@ -311,22 +312,22 @@
               <div
                 class="d-flex flex-column flex-sm-row justify-content-between mb-2"
               >
-                <h5 class="fw-bold mb-1">Operations & Sales Admin</h5>
+                <h5 class="fw-bold mb-1" data-i18n="exp-job2-title">Operations & Sales Admin</h5>
                 <span class="badge badge-dark-custom pt-2 align-self-start"
                   >Aug 2022 - Feb 2024</span
                 >
               </div>
               <h6 class="text-secondary fw-bold mb-3">@genshintagram.id</h6>
               <ul class="text-muted">
-                <li>
+                <li data-i18n="exp-job2-desc1">
                   Managed and logged daily customer order data into structured
                   formats to ensure timely service delivery.
                 </li>
-                <li>
+                <li data-i18n="exp-job2-desc2">
                   Secured the accuracy of transaction data and service schedules
                   to reliably minimize operational errors.
                 </li>
-                <li>
+                <li data-i18n="exp-job2-desc3">
                   Routinely archived order data securely to facilitate precise
                   tracking of transaction history.
                 </li>
@@ -336,7 +337,7 @@
 
           <!-- Organization -->
           <div class="scroll-fade scroll-stagger-2">
-            <h4 class="fw-bold d-flex align-items-center mb-4">
+              <h4 class="fw-bold d-flex align-items-center mb-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -354,7 +355,7 @@
                 />
                 <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
               </svg>
-              Organization
+              <span data-i18n="exp-org">Organization</span>
             </h4>
             <div
               class="timeline-item pb-0 border-left-transparent scroll-slide-left scroll-stagger-3"
@@ -362,13 +363,13 @@
               <div
                 class="d-flex flex-column flex-sm-row justify-content-between mb-2"
               >
-                <h5 class="fw-bold mb-1">Design Staff</h5>
+                <h5 class="fw-bold mb-1" data-i18n="exp-org-title">Design Staff</h5>
                 <span class="badge badge-dark-custom pt-2 align-self-start"
                   >Aug 2023 - Jan 2024</span
                 >
               </div>
               <h6 class="text-secondary fw-bold mb-3">UKM Catur Udinus</h6>
-              <p class="text-muted mb-0">
+              <p class="text-muted mb-0" data-i18n="exp-org-desc">
                 Led the creation of visual assets and promotional materials to
                 support operational structure and events within the campus chess
                 organization.
@@ -381,7 +382,7 @@
 
     <section id="skills" style="padding-bottom: 100px">
       <div class="container pt-5">
-        <h2 class="text-center mb-5 scroll-fade">My Technical Toolkit</h2>
+        <h2 class="text-center mb-5 scroll-fade" data-i18n="skills-title">My Technical Toolkit</h2>
 
         <div class="d-flex flex-column align-items-center gap-5">
           <!-- Frontend -->
@@ -523,8 +524,8 @@
     <section class="bg-black py-5" id="projects">
       <div class="container">
         <div class="text-center mb-4 scroll-fade">
-          <h2 class="text-white mb-2">Projects</h2>
-          <p class="text-white-50 small mb-0">Explore my featured projects</p>
+          <h2 class="text-white mb-2" data-i18n="proj-title">Projects</h2>
+          <p class="text-white-50 small mb-0" data-i18n="proj-subtitle">Explore my featured projects</p>
         </div>
 
         <!-- Filter Buttons -->
@@ -532,10 +533,10 @@
           class="d-flex flex-wrap justify-content-center gap-2 mb-5 scroll-fade"
           id="project-filters"
         >
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="web">Web Development</button>
-          <button class="filter-btn" data-filter="ml">Machine Learning</button>
-          <button class="filter-btn" data-filter="mobile">Mobile App</button>
+          <button class="filter-btn active" data-filter="all" data-i18n="filter-all">All</button>
+          <button class="filter-btn" data-filter="web" data-i18n="filter-web">Web Development</button>
+          <button class="filter-btn" data-filter="ml" data-i18n="filter-ml">Machine Learning</button>
+          <button class="filter-btn" data-filter="mobile" data-i18n="filter-mobile">Mobile App</button>
         </div>
 
         <!-- Project Grid -->
@@ -552,10 +553,10 @@
                 alt="Aspirasi Plamongan Sari"
               />
               <div class="card-body d-flex flex-column">
-                <h5 class="card-title">
+                <h5 class="card-title" data-i18n="proj-aspirasi-title">
                   Plamongan Sari Village Public Aspiration System
                 </h5>
-                <p class="card-text">
+                <p class="card-text" data-i18n="proj-aspirasi-desc">
                   A PHP and Bootstrap-based web platform to digitize and
                   streamline public feedback for local village administration.
                 </p>
@@ -609,10 +610,10 @@
                 alt="Churn Prediction"
               />
               <div class="card-body d-flex flex-column">
-                <h5 class="card-title">
+                <h5 class="card-title" data-i18n="proj-churn-title">
                   Churn Prediction using Logistic Regression
                 </h5>
-                <p class="card-text">
+                <p class="card-text" data-i18n="proj-churn-desc">
                   A predictive model using Logistic Regression to analyze and
                   identify customer retention risks.
                 </p>
@@ -664,8 +665,8 @@
                 alt="Mental Health Detection"
               />
               <div class="card-body d-flex flex-column">
-                <h5 class="card-title">Mental Health Detection using SVM</h5>
-                <p class="card-text">
+                <h5 class="card-title" data-i18n="proj-mental-title">Mental Health Detection using SVM</h5>
+                <p class="card-text" data-i18n="proj-mental-desc">
                   Undergraduate thesis project using SVM and SMOTE to classify
                   student mental health status from imbalanced data.
                 </p>
@@ -717,10 +718,10 @@
                 alt="Sentiment Analysis IKN"
               />
               <div class="card-body d-flex flex-column">
-                <h5 class="card-title">
+                <h5 class="card-title" data-i18n="proj-ikn-title">
                   Sentiment Analysis of IKN Discussions Using Naive Bayes
                 </h5>
-                <p class="card-text">
+                <p class="card-text" data-i18n="proj-ikn-desc">
                   Sentiment classification of Twitter data regarding Indonesia's
                   New Capital (IKN) using the Naive Bayes algorithm.
                 </p>
@@ -749,8 +750,8 @@
                 alt="To Do List"
               />
               <div class="card-body d-flex flex-column">
-                <h5 class="card-title">To Do List Website</h5>
-                <p class="card-text">
+                <h5 class="card-title" data-i18n="proj-todo-title">To Do List Website</h5>
+                <p class="card-text" data-i18n="proj-todo-desc">
                   A web-based to-do list application with Google authentication,
                   daily-reset checklists, and a weekly habit tracker.
                 </p>
@@ -804,10 +805,10 @@
                 alt="SpendScan"
               />
               <div class="card-body d-flex flex-column">
-                <h5 class="card-title">
+                <h5 class="card-title" data-i18n="proj-spendscan-title">
                   SpendScan — AI-Powered Expense Tracker
                 </h5>
-                <p class="card-text">
+                <p class="card-text" data-i18n="proj-spendscan-desc">
                   A mobile expense tracker built with React Native & Expo. Scan
                   receipts with your camera — AI (Groq Vision) automatically
                   reads items & prices. Features dashboard, transaction history,
@@ -861,8 +862,8 @@
     <section class="py-5" id="contact">
       <div class="container">
         <div class="text-center mb-5 scroll-fade">
-          <h2 class="fw-bold">Contact Me</h2>
-          <p style="color: var(--text-muted)">
+          <h2 class="fw-bold" data-i18n="contact-title">Contact Me</h2>
+          <p style="color: var(--text-muted)" data-i18n="contact-subtitle">
             Feel free to reach out for collaborations or just a friendly hello!
           </p>
         </div>
@@ -871,7 +872,7 @@
           <!-- Contact Form (Left) -->
           <div class="col-lg-7 scroll-slide-left">
             <div class="contact-form-card p-4 p-md-5 h-100">
-              <h4 class="fw-bold mb-4">Send a Message</h4>
+              <h4 class="fw-bold mb-4" data-i18n="contact-form-title">Send a Message</h4>
               <form
                 action="https://formsubmit.co/ilhamoktianramadhan@gmail.com"
                 method="POST"
@@ -882,11 +883,12 @@
                 <input
                   type="hidden"
                   name="_autoresponse"
-                  value="Thank you for reaching out! I have received your message and will get back to you shortly."
+                  value=""
+                  data-i18n-value="contact-autoresponse"
                 />
 
                 <div class="mb-3">
-                  <label for="name" class="form-label form-label-dark"
+                  <label for="name" class="form-label form-label-dark" data-i18n="contact-name-label"
                     >Your Name</label
                   >
                   <input
@@ -895,11 +897,12 @@
                     class="form-control form-control-dark border-0 py-2"
                     id="name"
                     placeholder="Enter your full name"
+                    data-i18n-placeholder="contact-name-placeholder"
                     required
                   />
                 </div>
                 <div class="mb-3">
-                  <label for="email" class="form-label form-label-dark"
+                  <label for="email" class="form-label form-label-dark" data-i18n="contact-email-label"
                     >Your Email</label
                   >
                   <input
@@ -908,11 +911,12 @@
                     class="form-control form-control-dark border-0 py-2"
                     id="email"
                     placeholder="name@example.com"
+                    data-i18n-placeholder="contact-email-placeholder"
                     required
                   />
                 </div>
                 <div class="mb-4">
-                  <label for="message" class="form-label form-label-dark"
+                  <label for="message" class="form-label form-label-dark" data-i18n="contact-msg-label"
                     >Message</label
                   >
                   <textarea
@@ -921,12 +925,13 @@
                     id="message"
                     rows="5"
                     placeholder="Let's build something amazing..."
+                    data-i18n-placeholder="contact-msg-placeholder"
                     required
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  class="btn btn-accent px-4 py-2 rounded-pill fw-bold w-100 mt-auto"
+                  class="btn btn-accent px-4 py-2 rounded-pill fw-bold w-100 mt-auto" data-i18n="contact-send-btn"
                 >
                   Send Message
                 </button>
@@ -937,7 +942,7 @@
           <!-- Contact Cards & Socials (Right) -->
           <div class="col-lg-5 scroll-slide-right">
             <div class="d-flex flex-column h-100 justify-content-center">
-              <h4 class="fw-bold mb-4">Direct Contact</h4>
+              <h4 class="fw-bold mb-4" data-i18n="contact-direct">Direct Contact</h4>
               <div class="row g-3 mb-5 text-center">
                 <div class="col-6 scroll-scale scroll-stagger-1">
                   <a
@@ -975,7 +980,7 @@
                 </div>
               </div>
 
-              <h4 class="fw-bold mb-4">Social Media</h4>
+              <h4 class="fw-bold mb-4" data-i18n="contact-social">Social Media</h4>
               <div class="d-flex flex-column align-items-start gap-3 ms-1">
                 <a
                   href="https://www.linkedin.com/in/ilham-oktian-0a32a6298"
@@ -1039,7 +1044,7 @@
     <!-- Footer -->
     <footer class="text-center py-4 mt-5">
       <div class="container">
-        <p class="mb-1">
+        <p class="mb-1" data-i18n="footer-copyright">
           &copy; 2026 Ilham Oktian Ramadhan. All rights reserved.
         </p>
       </div>

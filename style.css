@@ -890,3 +890,24 @@ footer p { color: var(--text-muted) !important; }
   transform: translateY(-5px);
   box-shadow: 0 8px 28px rgba(129,140,248,0.5) !important;
 }
+
+/* ===== LANGUAGE TOGGLE ===== */
+.lang-toggle-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+}
+
+.lang-toggle-btn:hover {
+  border-color: rgba(129, 140, 248, 0.5);
+  color: var(--accent);
+  background: rgba(129, 140, 248, 0.08);
+}
