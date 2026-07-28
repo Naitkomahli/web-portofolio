@@ -109,17 +109,17 @@
   setTimeout(() => {
     introText.classList.remove("active");
     introText.classList.add("fade-away");
-  }, 1700);
+  }, 800);
 
   setTimeout(() => {
     introText.remove();
     // Phase 2: Lightsaber Progress Bar
     loaderContent.classList.remove("hidden");
     startProgressAnimation();
-  }, 2400);
+  }, 1000);
 
   function startProgressAnimation() {
-    const totalDuration = 2800; // Snappy progress speed
+    const totalDuration = 1200;
     const startTime = performance.now();
     let rafId;
 
@@ -159,7 +159,7 @@
   function triggerHyperdriveJump() {
     // Rapidly ramp up speed warpFactor
     let startWarp = performance.now();
-    let warpDuration = 900;
+    let warpDuration = 400;
 
     function warpRamp(now) {
       const elapsed = now - startWarp;
@@ -179,7 +179,7 @@
         setTimeout(() => {
           loadingScreen.remove();
           window.removeEventListener("resize", resizeCanvas);
-        }, 800);
+        }, 300);
       }
     }
     requestAnimationFrame(warpRamp);
@@ -334,13 +334,13 @@ document.addEventListener("DOMContentLoaded", function () {
       "nav-experience": "Experience",
       "nav-projects": "Projects",
       "nav-contact": "Contact",
-      "hero-subtitle": "Junior Frontend Developer | Machine Learning Enthusiast",
+      "hero-subtitle": "Junior Web Developer | Machine Learning Enthusiast",
       "hero-desc":
         "Crafting elegant, functional, and user-centric web experiences with a focus on clean code.",
       "about-label": "Discover",
       "about-title": "About Me",
       "about-lead":
-        "I am a Junior Frontend Developer and Machine Learning Enthusiast based in Indonesia.",
+        "I am a Junior Web Developer and Machine Learning Enthusiast based in Indonesia.",
       "about-text":
         "I have a strong passion for building elegant, functional, and user-centric web experiences. I prioritize writing clean, maintainable code and always strive to stay ahead of the curve by exploring the latest technologies in web development and data science.",
       "about-dl-btn": "Download CV",
@@ -353,7 +353,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "exp-job1-desc1":
         'Designed and built the "Aspirasi Masyarakat" web application end-to-end (Fullstack) to facilitate citizen reporting.',
       "exp-job1-desc2":
-        "Developed a responsive frontend interface and robust backend data management system.",
+        "Developed a responsive web interface and robust backend data management system.",
       "exp-job1-desc3":
         "Executed independent feature testing to ensure flawless data input flow and user experience.",
       "exp-job2-title": "Operations & Sales Admin",
@@ -420,13 +420,13 @@ document.addEventListener("DOMContentLoaded", function () {
       "nav-projects": "Proyek",
       "nav-contact": "Kontak",
       "hero-subtitle":
-        "Junior Frontend Developer | Penggemar Machine Learning",
+        "Junior Web Developer | Penggemar Machine Learning",
       "hero-desc":
         "Membangun pengalaman web yang elegan, fungsional, dan berpusat pada pengguna dengan fokus pada kode yang bersih.",
       "about-label": "Kenali",
       "about-title": "Tentang Saya",
       "about-lead":
-        "Saya adalah Junior Frontend Developer dan Penggemar Machine Learning yang berbasis di Indonesia.",
+        "Saya adalah Junior Web Developer dan Penggemar Machine Learning yang berbasis di Indonesia.",
       "about-text":
         "Saya memiliki passion kuat dalam membangun pengalaman web yang elegan, fungsional, dan berpusat pada pengguna. Saya mengutamakan penulisan kode yang bersih dan mudah dirawat, serta selalu berusaha mengikuti perkembangan teknologi terbaru di bidang pengembangan web dan data sains.",
       "about-dl-btn": "Unduh CV",
@@ -439,7 +439,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "exp-job1-desc1":
         'Merancang dan membangun aplikasi web "Aspirasi Masyarakat" secara end-to-end (Fullstack) untuk memfasilitasi pelaporan warga.',
       "exp-job1-desc2":
-        "Mengembangkan antarmuka frontend yang responsif dan sistem manajemen data backend yang kokoh.",
+        "Mengembangkan antarmuka web yang responsif dan sistem manajemen data backend yang kokoh.",
       "exp-job1-desc3":
         "Melakukan pengujian fitur secara mandiri untuk memastikan alur input data dan pengalaman pengguna yang sempurna.",
       "exp-job2-title": "Admin Operasional & Penjualan",

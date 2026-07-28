@@ -28,7 +28,7 @@
 
 ## 3. Tech Stack
 
-### Mobile App (Frontend) — Saya yang bangun
+### Mobile App (Web) — Saya yang bangun
 
 | Teknologi | Fungsi |
 |-----------|--------|
