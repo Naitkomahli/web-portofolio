@@ -918,6 +918,7 @@ footer p { color: var(--text-muted) !important; }
 /* ===== SCROLL PERFORMANCE ===== */
 /* Skip rendering off-screen sections so scrolling stays light.
    contain-intrinsic-size keeps the scrollbar stable. */
+#skills,
 #projects,
 #contact {
   content-visibility: auto;
