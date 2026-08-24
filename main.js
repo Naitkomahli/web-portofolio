@@ -192,6 +192,7 @@ const navbar = document.querySelector(".navbar");
 let lastScrollTop = 0;
 let scrollUpDistance = 0;
 let mouseTimeout = null;
+let ticking = false;
 
 function startMouseTimeout(scrollTop) {
   if (scrollTop > 100 && !mouseTimeout) {
@@ -201,20 +202,29 @@ function startMouseTimeout(scrollTop) {
   }
 }
 
-window.addEventListener("scroll", function () {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  if (scrollTop > lastScrollTop && scrollTop > 100) {
-    navbar.classList.add("navbar-hidden");
-    scrollUpDistance = 0;
-  } else if (scrollTop < lastScrollTop) {
-    scrollUpDistance += lastScrollTop - scrollTop;
-    if (scrollUpDistance > 150 || scrollTop <= 50) {
-      navbar.classList.remove("navbar-hidden");
-      startMouseTimeout(scrollTop);
-    }
-  }
-  lastScrollTop = scrollTop;
-});
+window.addEventListener(
+  "scroll",
+  function () {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop && scrollTop > 100) {
+        navbar.classList.add("navbar-hidden");
+        scrollUpDistance = 0;
+      } else if (scrollTop < lastScrollTop) {
+        scrollUpDistance += lastScrollTop - scrollTop;
+        if (scrollUpDistance > 150 || scrollTop <= 50) {
+          navbar.classList.remove("navbar-hidden");
+          startMouseTimeout(scrollTop);
+        }
+      }
+      lastScrollTop = scrollTop;
+      ticking = false;
+    });
+  },
+  { passive: true }
+);
 
 window.addEventListener("mousemove", function (e) {
   if (e.clientY <= 120) {
@@ -394,6 +404,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "proj-spendscan-title": "SpendScan — AI-Powered Expense Tracker",
       "proj-spendscan-desc":
         "A mobile expense tracker built with React Native & Expo. Scan receipts with your camera — AI (Groq Vision) automatically reads items & prices. Features dashboard, transaction history, financial reports, and secure authentication.",
+      "proj-jobtracker-title": "JobTracker — Fullstack Job Application Tracker",
+      "proj-jobtracker-desc":
+        "A web app to track job applications with auth, CRUD, status badges, and an elapsed-time \"Age\" tracker. Built with React + Vite, Express, and PostgreSQL (Supabase), deployed on Vercel.",
       "contact-title": "Contact Me",
       "contact-subtitle":
         "Feel free to reach out for collaborations or just a friendly hello!",
@@ -480,6 +493,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "proj-spendscan-title": "SpendScan — Pelacak Pengeluaran Berbasis AI",
       "proj-spendscan-desc":
         "Pelacak pengeluaran mobile berbasis React Native & Expo. Pindai struk dengan kamera — AI (Groq Vision) otomatis membaca item & harga. Dilengkapi dashboard, riwayat transaksi, laporan keuangan, dan autentikasi aman.",
+      "proj-jobtracker-title": "JobTracker — Pelacak Lamaran Kerja Fullstack",
+      "proj-jobtracker-desc":
+        "Aplikasi web untuk melacak lamaran kerja dengan autentikasi, CRUD, badge status, dan pelacak \"Age\" (waktu sejak apply). Dibangun dengan React + Vite, Express, dan PostgreSQL (Supabase), di-deploy di Vercel.",
       "contact-title": "Hubungi Saya",
       "contact-subtitle":
         "Jangan ragu untuk menghubungi saya untuk kolaborasi atau sekadar menyapa!",

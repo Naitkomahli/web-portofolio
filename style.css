@@ -17,6 +17,7 @@
 
 html {
   scroll-behavior: smooth;
+  overscroll-behavior-y: none;
   overflow-x: hidden;
   width: 100%;
   max-width: 100%;
@@ -669,8 +670,10 @@ body.loading {
 
 .project-card .card-img-top {
   width: 100%;
-  height: 280px;
-  object-fit: cover;
+  height: auto;
+  aspect-ratio: 2.21 / 1;
+  object-fit: contain;
+  background-color: var(--bg-card);
 }
 
 .project-card:hover {
@@ -910,4 +913,13 @@ footer p { color: var(--text-muted) !important; }
   border-color: rgba(129, 140, 248, 0.5);
   color: var(--accent);
   background: rgba(129, 140, 248, 0.08);
+}
+
+/* ===== SCROLL PERFORMANCE ===== */
+/* Skip rendering off-screen sections so scrolling stays light.
+   contain-intrinsic-size keeps the scrollbar stable. */
+#projects,
+#contact {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1200px;
 }
