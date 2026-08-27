@@ -318,7 +318,8 @@ document.addEventListener("DOMContentLoaded", function () {
         item.classList.add("filtering");
 
         setTimeout(() => {
-          if (filterValue === "all" || category === filterValue) {
+          const cats = (category || "").split(" ");
+          if (filterValue === "all" || cats.includes(filterValue)) {
             item.classList.remove("hidden");
             // Remove filtering class after a brief delay to allow transition
             requestAnimationFrame(() => {
@@ -384,6 +385,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "filter-web": "Web Development",
       "filter-ml": "Machine Learning",
       "filter-mobile": "Mobile App",
+      "filter-data-analyst": "Data Analyst",
       "proj-aspirasi-title":
         "Plamongan Sari Village Public Aspiration System",
       "proj-aspirasi-desc":
@@ -407,6 +409,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "proj-jobtracker-title": "JobTracker — Fullstack Job Application Tracker",
       "proj-jobtracker-desc":
         "A web app to track job applications with auth, CRUD, status badges, and an elapsed-time \"Age\" tracker. Built with React + Vite, Express, and PostgreSQL (Supabase), deployed on Vercel.",
+      "proj-rfm-title": "Customer Segmentation — RFM + K-Means",
+      "proj-rfm-desc":
+        "Segmented 5,878 customers via RFM analysis + K-Means clustering (k=4) on 800K+ retail transactions. Profiled Champions, Loyal, At Risk, and Lost segments for business action.",
       "contact-title": "Contact Me",
       "contact-subtitle":
         "Feel free to reach out for collaborations or just a friendly hello!",
@@ -473,6 +478,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "filter-web": "Web",
       "filter-ml": "Machine Learning",
       "filter-mobile": "Aplikasi Mobile",
+      "filter-data-analyst": "Data Analyst",
       "proj-aspirasi-title":
         "Sistem Aspirasi Masyarakat Desa Plamongan Sari",
       "proj-aspirasi-desc":
@@ -496,6 +502,9 @@ document.addEventListener("DOMContentLoaded", function () {
       "proj-jobtracker-title": "JobTracker — Pelacak Lamaran Kerja Fullstack",
       "proj-jobtracker-desc":
         "Aplikasi web untuk melacak lamaran kerja dengan autentikasi, CRUD, badge status, dan pelacak \"Age\" (waktu sejak apply). Dibangun dengan React + Vite, Express, dan PostgreSQL (Supabase), di-deploy di Vercel.",
+      "proj-rfm-title": "Segmentasi Pelanggan — RFM + K-Means",
+      "proj-rfm-desc":
+        "Membagi 5.878 pelanggan lewat analisis RFM + K-Means clustering (k=4) dari 800K+ transaksi ritel. Memprofil Champions, Loyal, At Risk, dan Lost untuk tindakan bisnis.",
       "contact-title": "Hubungi Saya",
       "contact-subtitle":
         "Jangan ragu untuk menghubungi saya untuk kolaborasi atau sekadar menyapa!",
