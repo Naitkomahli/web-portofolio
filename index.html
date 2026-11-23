@@ -1,43 +1,50 @@
 <!doctype html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ilham Oktian — Portfolio</title>
+    <meta
+      name="description"
+      content="Ilham Oktian Ramadhan, web developer and machine learning enthusiast in Indonesia. Portfolio of web and machine learning projects."
+    />
+    <meta name="theme-color" content="#0d1117" />
+    <title>Ilham Oktian | Portfolio</title>
     <link
       rel="icon"
-      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💻</text></svg>"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%230d1117%22/><text x=%2250%22 y=%2268%22 font-family=%22monospace%22 font-size=%2248%22 font-weight=%22700%22 text-anchor=%22middle%22 fill=%22%23818cf8%22>IO</text></svg>"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="style.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+    <noscript>
+      <style>
+        #loading-screen { display: none !important; }
+        body.loading { overflow: auto !important; }
+        .nav-toggle { display: none !important; }
+        @media (max-width: 899px) {
+          .nav-menu { display: block !important; visibility: visible !important; }
+          .nav-menu-inner { overflow: visible !important; }
+        }
+      </style>
+    </noscript>
   </head>
   <body class="loading">
+    <a class="skip-link" href="#main" data-i18n="skip-link">Skip to content</a>
+
     <!-- ===== LOADING SCREEN ===== -->
     <div id="loading-screen" aria-label="Loading portfolio" role="status">
-      <!-- HTML5 Canvas for Space Starfield & Hyperdrive -->
       <canvas id="space-canvas"></canvas>
-
-      <!-- Star Wars Intro Text -->
       <div id="starwars-intro" class="sw-intro-text">
         A long time ago in a portfolio far,<br />far away...
       </div>
-
-      <!-- Space Loader Interface (hidden during intro text) -->
       <div id="loader-content" class="loader-content-wrap hidden">
-        <!-- Lightsaber Progress Bar -->
         <div class="lightsaber-assembly">
           <div class="lightsaber-container">
             <div class="lightsaber-hilt">
@@ -61,1210 +68,1062 @@
             </div>
           </div>
         </div>
-
-        <!-- Progress Label and Percentage -->
         <div class="loader-progress-wrap">
           <div class="loader-progress-label">
-            <span id="loader-status"
-              >Initializing kyber crystal power core...</span
-            >
+            <span id="loader-status">Initializing kyber crystal power core...</span>
             <span id="loader-pct">0%</span>
           </div>
         </div>
       </div>
     </div>
-    <div class="container mt-5 pt-3">
-      <header
-        class="navbar navbar-expand-lg navbar-dark fixed-top mt-3 mx-auto rounded-4 px-4 blur-nav"
-        style="max-width: 900px; width: 90%"
-      >
-        <div class="container-fluid">
-          <a class="navbar-brand fw-bold" href="#home">Portfolio.</a>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <nav class="navbar-nav ms-auto">
-              <a
-                href="#about"
-                class="nav-link nav-link-dark fw-semibold mx-2"
-                data-i18n="nav-about"
-                >About</a
-              >
-              <a
-                href="#skills"
-                class="nav-link nav-link-dark fw-semibold mx-2"
-                data-i18n="nav-skills"
-                >Skills</a
-              >
-              <a
-                href="#experience"
-                class="nav-link nav-link-dark fw-semibold mx-2"
-                data-i18n="nav-experience"
-                >Experience</a
-              >
-              <a
-                href="#projects"
-                class="nav-link nav-link-dark fw-semibold mx-2"
-                data-i18n="nav-projects"
-                >Projects</a
-              >
-              <a
-                href="#contact"
-                class="nav-link nav-link-dark fw-semibold mx-2"
-                data-i18n="nav-contact"
-                >Contact</a
-              >
-            </nav>
-            <button
-              id="lang-toggle"
-              class="lang-toggle-btn ms-2"
-              title="Switch Language"
-            >
+
+    <!-- ===== NAV ===== -->
+    <div class="scroll-meter" aria-hidden="true">
+      <span data-scroll-meter></span>
+    </div>
+    <header class="site-nav" id="site-nav">
+      <div class="nav-dock" data-nav-dock>
+        <a class="brand" href="#home" aria-label="Ilham Oktian, back to top">
+          <span class="brand-name">Ilham Oktian</span>
+        </a>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+          aria-label="Menu"
+        >
+          <span class="nav-toggle-line"></span>
+          <span class="nav-toggle-line"></span>
+        </button>
+        <nav class="nav-menu" id="nav-menu" aria-label="Primary">
+          <div class="nav-menu-inner">
+            <a class="nav-link" href="#about" data-i18n="nav-about">About</a>
+            <a class="nav-link" href="#experience" data-i18n="nav-experience">Experience</a>
+            <a class="nav-link" href="#skills" data-i18n="nav-skills">Toolkit</a>
+            <a class="nav-link" href="#projects" data-i18n="nav-projects">Portfolio</a>
+            <a class="nav-link" href="#contact" data-i18n="nav-contact">Contact</a>
+            <button class="lang-toggle" id="lang-toggle" type="button" aria-label="Switch language">
               EN
             </button>
           </div>
-        </div>
-      </header>
-    </div>
-
-    <section
-      class="container-fluid d-flex align-items-center"
-      id="home"
-      style="min-height: 100vh"
-    >
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-7 text-center text-md-start scroll-slide-left">
-            <h1 class="display-4 fw-bold">Ilham Oktian Ramadhan</h1>
-            <p class="lead fw-semibold" data-i18n="hero-subtitle">
-              Junior Web Developer | Machine Learning Enthusiast
-            </p>
-            <p data-i18n="hero-desc">
-              Crafting elegant, functional, and user-centric web experiences
-              with a focus on clean code.
-            </p>
-          </div>
-          <div class="col-md-5 text-center scroll-slide-right">
-            <img
-              src="assets/foto_profile.jpeg"
-              alt="Ilham Oktian Ramadhan"
-              class="img-profile img-fluid rounded-circle shadow-lg object-fit-cover"
-              style="width: 300px; height: 300px; object-position: center 35%"
-            />
-          </div>
-        </div>
+        </nav>
       </div>
-    </section>
+    </header>
 
-    <!-- About Section -->
-    <section class="py-5" id="about">
-      <div class="container py-4">
-        <div class="row justify-content-center">
-          <div class="col-lg-9 scroll-slide-up">
-            <div class="text-center mb-5 scroll-fade">
-              <span class="section-label" data-i18n="about-label"
-                >Discover</span
-              >
-              <h2 class="display-6 fw-bold mt-2" data-i18n="about-title">
-                About Me
+    <main id="main" tabindex="-1">
+      <!-- ===== SCENE 1: HERO + ABOUT ===== -->
+      <div class="hero-stage">
+        <section class="hero" id="home" aria-labelledby="hero-name">
+          <div class="hero-stars" aria-hidden="true"></div>
+          <div class="hero-glow" aria-hidden="true"></div>
+          <div class="shell hero-grid">
+            <div class="hero-copy">
+              <h1 class="hero-name" id="hero-name">
+                <span class="hero-line"><span>Ilham Oktian</span></span>
+                <span class="hero-line"><span>Ramadhan</span></span>
+              </h1>
+              <p class="hero-role load-reveal" data-i18n="hero-subtitle" style="--load-delay: 0.5s">
+                Junior Web Developer / Machine Learning Enthusiast
+              </p>
+              <p class="hero-desc load-reveal" data-i18n="hero-desc" style="--load-delay: 0.6s">
+                Crafting elegant, functional, and user-centric web experiences
+                with a focus on clean code.
+              </p>
+              <a class="text-link hero-link load-reveal" href="#projects" style="--load-delay: 0.7s">
+                <span data-i18n="hero-cta">Explore the portfolio</span>
+                <svg
+                  class="icon"
+                  aria-hidden="true"
+                  focusable="false"
+                  viewBox="0 0 16 16"
+                  width="14"
+                  height="14"
+                >
+                  <path
+                    d="M8 2v11M3.5 8.5 8 13l4.5-4.5"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  />
+                </svg>
+              </a>
+            </div>
+            <div class="hero-portrait">
+              <img
+                class="portrait"
+                src="assets/foto_profile.jpeg"
+                alt="Ilham Oktian Ramadhan"
+                width="300"
+                height="300"
+                fetchpriority="high"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section class="section about" id="about" aria-labelledby="about-title">
+          <div class="shell">
+            <div class="section-head" data-reveal>
+              <h2 class="section-title" id="about-title" data-i18n="about-title">
+                About
               </h2>
-              <div class="accent-line mt-3"></div>
             </div>
-
-            <p
-              class="lead fw-semibold mb-3 text-center scroll-fade scroll-stagger-1"
-              data-i18n="about-lead"
-            >
-              I am a Junior Web Developer and Machine Learning Enthusiast based
-              in Indonesia.
-            </p>
-            <p
-              class="mb-4 text-center scroll-fade scroll-stagger-2"
-              data-i18n="about-text"
-              style="line-height: 1.8; color: var(--text-muted)"
-            >
-              I have a strong passion for building elegant, functional, and
-              user-centric web experiences. I prioritize writing clean,
-              maintainable code and always strive to stay ahead of the curve by
-              exploring the latest technologies in web development and data
-              science.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience & Education Section -->
-    <section class="container py-5 my-3" id="experience">
-      <div class="row justify-content-center">
-        <div class="col-lg-8 scroll-slide-up">
-          <!-- Education -->
-          <div class="mb-5 scroll-fade">
-            <h4 class="fw-bold d-flex align-items-center mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="currentColor"
-                class="bi bi-mortarboard-fill me-2"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M8.211 2.047a.5.5 0 0 0-.422 0l-7.5 3.5a.5.5 0 0 0 .025.917l7.5 3a.5.5 0 0 0 .372 0L14 7.14V13a1 1 0 0 0-1 1v2h3v-2a1 1 0 0 0-1-1V6.739l.686-.275a.5.5 0 0 0 .025-.917l-7.5-3.5Z"
-                />
-                <path
-                  d="M4.176 9.032a.5.5 0 0 0-.656.327l-.5 1.7a.5.5 0 0 0 .294.605l4.5 1.8a.5.5 0 0 0 .372 0l4.5-1.8a.5.5 0 0 0 .294-.605l-.5-1.7a.5.5 0 0 0-.656-.327L8 10.466 4.176 9.032Z"
-                />
-              </svg>
-              <span data-i18n="exp-education">Education</span>
-            </h4>
-            <div class="timeline-item scroll-slide-left scroll-stagger-1">
-              <div
-                class="d-flex flex-column flex-sm-row justify-content-between mb-2"
-              >
-                <h5 class="fw-bold mb-1" data-i18n="exp-edu-degree">
-                  Bachelor of Informatics Engineering
-                </h5>
-                <span class="badge badge-dark-custom pt-2 align-self-start"
-                  >Oct 2022 - Apr 2026</span
-                >
-              </div>
-              <h6 class="text-secondary fw-bold mb-3 d-flex align-items-center">
-                <img
-                  src="assets/logo_udinus.png"
-                  alt="Udinus"
-                  style="width: 25px; height: 25px; object-fit: contain"
-                  class="me-2 rounded shadow-sm"
-                />
-                Universitas Dian Nuswantoro
-              </h6>
-              <p class="text-muted">
-                <span data-i18n="exp-edu-desc-pre"
-                  >Currently pursuing a bachelor's degree. Consistently
-                  maintaining strong academic performance with a GPA of</span
-                >
-                <strong style="color: var(--accent)">3.72 / 4.00</strong>.
+            <div class="section-body about-body">
+              <p class="lead" data-reveal style="--reveal-delay: 0.04s" data-i18n="about-lead">
+                I am a Junior Web Developer and Machine Learning Enthusiast
+                based in Indonesia.
+              </p>
+              <p class="body-copy" data-reveal style="--reveal-delay: 0.1s" data-i18n="about-text">
+                I have a strong passion for building elegant, functional, and
+                user-centric web experiences. I prioritize writing clean,
+                maintainable code and always strive to stay ahead of the curve
+                by exploring the latest technologies in web development and data
+                science.
+              </p>
+              <p class="about-note" data-reveal style="--reveal-delay: 0.16s" data-i18n="about-note">
+                Informatics Engineering / Universitas Dian Nuswantoro
               </p>
             </div>
           </div>
+        </section>
+      </div>
 
-          <!-- Professional Experience -->
-          <div class="mb-5 scroll-fade scroll-stagger-1">
-            <h4 class="fw-bold d-flex align-items-center mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="currentColor"
-                class="bi bi-briefcase-fill me-2"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H1.5A1.5 1.5 0 0 0 0 4.5v.384l7.614 2.03a1.5 1.5 0 0 0 .772 0L16 4.884V4.5A1.5 1.5 0 0 0 14.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zm0 1h3a.5.5 0 0 1 .5.5V3H6v-.5a.5.5 0 0 1 .5-.5z"
-                />
-                <path
-                  d="M0 12.5A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5V6.85L8.129 8.947a.5.5 0 0 1-.258 0L0 6.85v5.65z"
-                />
-              </svg>
-              <span data-i18n="exp-experience">Experience</span>
-            </h4>
+      <!-- ===== EXPERIENCE ===== -->
+      <section class="section experience" id="experience" aria-labelledby="exp-title">
+        <div class="shell">
+          <div class="section-head" data-reveal>
+            <h2 class="section-title" id="exp-title" data-i18n="exp-title">
+              Experience
+            </h2>
+          </div>
 
-            <div class="timeline-item scroll-slide-left scroll-stagger-1">
-              <div
-                class="d-flex flex-column flex-sm-row justify-content-between mb-2"
-              >
-                <h5 class="fw-bold mb-1" data-i18n="exp-job1-title">
-                  Web Developer Intern
-                </h5>
-                <span class="badge badge-dark-custom pt-2 align-self-start"
-                  >Apr 2025 - May 2025</span
-                >
+          <div class="section-body exp-list">
+            <div class="exp-row" data-reveal>
+              <p class="exp-group">
+                <span data-i18n="exp-group-education">Education</span>
+              </p>
+              <div class="timeline">
+                <article class="timeline-item">
+                  <p class="meta">OCT 2022 / APR 2026</p>
+                  <h3 data-i18n="exp-edu-degree">
+                    Bachelor of Informatics Engineering
+                  </h3>
+                  <p class="org" data-i18n="exp-edu-org">
+                    Universitas Dian Nuswantoro
+                  </p>
+                  <p class="exp-desc" data-i18n="exp-edu-desc">
+                    GPA 3.72 / 4.00
+                  </p>
+                </article>
               </div>
-              <h6 class="text-secondary fw-bold mb-3">
-                Dinas Komunikasi dan Informatika (Diskominfo)
-              </h6>
-              <ul class="text-muted">
-                <li data-i18n="exp-job1-desc1">
-                  Designed and built the "Aspirasi Masyarakat" web application
-                  end-to-end (Fullstack) to facilitate citizen reporting.
+            </div>
+
+            <div class="exp-row" data-reveal style="--reveal-delay: 0.08s">
+              <p class="exp-group">
+                <span data-i18n="exp-group-work">Experience</span>
+              </p>
+              <div class="timeline">
+                <article class="timeline-item">
+                  <p class="meta">APR 2025 / MAY 2025</p>
+                  <h3 data-i18n="exp-job1-title">Web Developer Intern</h3>
+                  <p class="org" data-i18n="exp-job1-org">
+                    Dinas Komunikasi dan Informatika (Diskominfo)
+                  </p>
+                  <ul class="exp-points">
+                    <li data-i18n="exp-job1-desc1">
+                      Designed and built the Aspirasi Masyarakat web application
+                      end to end, from interface to database.
+                    </li>
+                    <li data-i18n="exp-job1-desc2">
+                      Built a responsive interface and the backend data
+                      management behind it.
+                    </li>
+                    <li data-i18n="exp-job1-desc3">
+                      Tested features independently to keep the reporting flow
+                      reliable.
+                    </li>
+                  </ul>
+                </article>
+
+                <article class="timeline-item">
+                  <p class="meta">AUG 2022 / FEB 2024</p>
+                  <h3 data-i18n="exp-job2-title">Operations &amp; Sales Admin</h3>
+                  <p class="org">@genshintagram.id</p>
+                  <ul class="exp-points">
+                    <li data-i18n="exp-job2-desc1">
+                      Logged daily customer orders into structured formats so
+                      deliveries stayed on schedule.
+                    </li>
+                    <li data-i18n="exp-job2-desc2">
+                      Kept transaction data and service schedules accurate to
+                      reduce operational errors.
+                    </li>
+                    <li data-i18n="exp-job2-desc3">
+                      Archived order data so transaction history could be traced
+                      reliably.
+                    </li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+
+            <div class="exp-row" data-reveal style="--reveal-delay: 0.08s">
+              <p class="exp-group">
+                <span data-i18n="exp-group-org">Organization</span>
+              </p>
+              <div class="timeline">
+                <article class="timeline-item">
+                  <p class="meta">AUG 2023 / JAN 2024</p>
+                  <h3 data-i18n="exp-org-title">Design Staff</h3>
+                  <p class="org">UKM Catur Udinus</p>
+                  <p class="exp-desc" data-i18n="exp-org-desc">
+                    Produced visual assets and promotional material for the
+                    campus chess organization.
+                  </p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== SKILLS ===== -->
+      <section class="section skills" id="skills" aria-labelledby="skills-title">
+        <div class="shell">
+          <div class="section-head" data-reveal>
+            <h2 class="section-title" id="skills-title" data-i18n="skills-title">
+              Toolkit
+            </h2>
+          </div>
+
+          <div class="section-body skills-grid">
+            <div class="skill-group" data-reveal>
+              <p class="skill-group-tag" data-i18n="skills-frontend">Frontend</p>
+              <ul class="pill-list">
+                <li class="skill-pill">
+                  <img
+                    src="https://img.icons8.com/color/96/000000/html-5--v1.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>HTML5</span>
                 </li>
-                <li data-i18n="exp-job1-desc2">
-                  Developed a responsive web interface and robust backend data
-                  management system.
+                <li class="skill-pill">
+                  <img
+                    src="https://img.icons8.com/color/96/000000/css3.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>CSS3</span>
                 </li>
-                <li data-i18n="exp-job1-desc3">
-                  Executed independent feature testing to ensure flawless data
-                  input flow and user experience.
+                <li class="skill-pill">
+                  <img
+                    src="https://img.icons8.com/color/96/000000/javascript--v1.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>JavaScript</span>
+                </li>
+                <li class="skill-pill">
+                  <img
+                    src="https://img.icons8.com/color/96/000000/bootstrap.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>Bootstrap</span>
+                </li>
+                <li class="skill-pill">
+                  <img
+                    src="https://img.icons8.com/color/96/000000/react-native.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>React.js</span>
+                </li>
+                <li class="skill-pill">
+                  <img
+                    src="https://img.icons8.com/color/96/000000/react-native.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>React Native</span>
+                </li>
+                <li class="skill-pill">
+                  <img
+                    src="https://img.icons8.com/color/96/000000/overview-pages-1.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>Expo</span>
                 </li>
               </ul>
             </div>
 
-            <div
-              class="timeline-item pb-0 border-left-transparent scroll-slide-left scroll-stagger-2"
-            >
-              <div
-                class="d-flex flex-column flex-sm-row justify-content-between mb-2"
-              >
-                <h5 class="fw-bold mb-1" data-i18n="exp-job2-title">
-                  Operations & Sales Admin
-                </h5>
-                <span class="badge badge-dark-custom pt-2 align-self-start"
-                  >Aug 2022 - Feb 2024</span
-                >
-              </div>
-              <h6 class="text-secondary fw-bold mb-3">@genshintagram.id</h6>
-              <ul class="text-muted">
-                <li data-i18n="exp-job2-desc1">
-                  Managed and logged daily customer order data into structured
-                  formats to ensure timely service delivery.
+            <div class="skill-group" data-reveal style="--reveal-delay: 0.08s">
+              <p class="skill-group-tag" data-i18n="skills-backend">
+                Backend &amp; Database
+              </p>
+              <ul class="pill-list">
+                <li class="skill-pill">
+                  <img
+                    src="https://img.icons8.com/color/96/000000/nodejs.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>Node.js</span>
                 </li>
-                <li data-i18n="exp-job2-desc2">
-                  Secured the accuracy of transaction data and service schedules
-                  to reliably minimize operational errors.
+                <li class="skill-pill">
+                  <img
+                    class="skill-icon--invert"
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>Express.js</span>
                 </li>
-                <li data-i18n="exp-job2-desc3">
-                  Routinely archived order data securely to facilitate precise
-                  tracking of transaction history.
+                <li class="skill-pill">
+                  <img
+                    src="https://img.icons8.com/color/96/000000/database.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>Supabase</span>
+                </li>
+                <li class="skill-pill">
+                  <img
+                    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>PostgreSQL</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="skill-group" data-reveal style="--reveal-delay: 0.16s">
+              <p class="skill-group-tag" data-i18n="skills-data">Data &amp; AI</p>
+              <ul class="pill-list">
+                <li class="skill-pill">
+                  <img
+                    src="https://img.icons8.com/color/96/000000/python.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>Python</span>
+                </li>
+                <li class="skill-pill">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>Scikit-Learn</span>
+                </li>
+                <li class="skill-pill">
+                  <img
+                    src="https://img.icons8.com/color/96/000000/artificial-intelligence.png"
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span>LLM / AI API</span>
                 </li>
               </ul>
             </div>
           </div>
+        </div>
+      </section>
 
-          <!-- Organization -->
-          <div class="scroll-fade scroll-stagger-2">
-            <h4 class="fw-bold d-flex align-items-center mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="currentColor"
-                class="bi bi-people-fill me-2"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"
-                />
-                <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
-              </svg>
-              <span data-i18n="exp-org">Organization</span>
-            </h4>
-            <div
-              class="timeline-item pb-0 border-left-transparent scroll-slide-left scroll-stagger-3"
-            >
-              <div
-                class="d-flex flex-column flex-sm-row justify-content-between mb-2"
-              >
-                <h5 class="fw-bold mb-1" data-i18n="exp-org-title">
-                  Design Staff
-                </h5>
-                <span class="badge badge-dark-custom pt-2 align-self-start"
-                  >Aug 2023 - Jan 2024</span
-                >
-              </div>
-              <h6 class="text-secondary fw-bold mb-3">UKM Catur Udinus</h6>
-              <p class="text-muted mb-0" data-i18n="exp-org-desc">
-                Led the creation of visual assets and promotional materials to
-                support operational structure and events within the campus chess
-                organization.
-              </p>
-            </div>
+      <!-- ===== INTERLUDE ===== -->
+      <div class="interlude" data-marquee-wrap aria-hidden="true">
+        <div class="interlude-track" data-marquee>
+          <div class="interlude-group">
+            <span>Web development</span>
+            <span>Machine learning</span>
+            <span>Interface design</span>
+            <span>Astro</span>
+            <span>React</span>
+            <span>Python</span>
+            <span>Supabase</span>
+            <span>Data storytelling</span>
+          </div>
+          <div class="interlude-group">
+            <span>Web development</span>
+            <span>Machine learning</span>
+            <span>Interface design</span>
+            <span>Astro</span>
+            <span>React</span>
+            <span>Python</span>
+            <span>Supabase</span>
+            <span>Data storytelling</span>
           </div>
         </div>
       </div>
-    </section>
 
-    <section id="skills" style="padding-bottom: 100px">
-      <div class="container pt-5">
-        <h2 class="text-center mb-5 scroll-fade" data-i18n="skills-title">
-          My Technical Toolkit
-        </h2>
-
-        <div class="d-flex flex-column align-items-center gap-5">
-          <!-- Frontend -->
-          <div class="skill-group scroll-fade" data-category="frontend">
-            <span class="skill-group-tag">⚡ Frontend</span>
-            <div class="d-flex flex-wrap justify-content-center gap-2">
-              <div class="skill-pill scroll-scale scroll-stagger-1">
-                <img
-                  src="https://img.icons8.com/color/96/000000/html-5--v1.png"
-                  alt="HTML5"
-                  class="skill-pill-icon"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">HTML5</span>
-              </div>
-              <div class="skill-pill scroll-scale scroll-stagger-2">
-                <img
-                  src="https://img.icons8.com/color/96/000000/css3.png"
-                  alt="CSS3"
-                  class="skill-pill-icon"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">CSS3</span>
-              </div>
-              <div class="skill-pill scroll-scale scroll-stagger-3">
-                <img
-                  src="https://img.icons8.com/color/96/000000/javascript--v1.png"
-                  alt="JavaScript"
-                  class="skill-pill-icon"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">JavaScript</span>
-              </div>
-              <div class="skill-pill scroll-scale scroll-stagger-4">
-                <img
-                  src="https://img.icons8.com/color/96/000000/bootstrap.png"
-                  alt="Bootstrap"
-                  class="skill-pill-icon"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">Bootstrap</span>
-              </div>
-              <div class="skill-pill scroll-scale scroll-stagger-5">
-                <img
-                  src="https://img.icons8.com/color/96/000000/react-native.png"
-                  alt="React.js"
-                  class="skill-pill-icon"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">React.js</span>
-              </div>
-              <div class="skill-pill scroll-scale scroll-stagger-1">
-                <img
-                  src="https://img.icons8.com/color/96/000000/react-native.png"
-                  alt="React Native"
-                  class="skill-pill-icon"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">React Native</span>
-              </div>
-              <div class="skill-pill scroll-scale scroll-stagger-2">
-                <img
-                  src="https://img.icons8.com/color/96/000000/overview-pages-1.png"
-                  alt="Expo"
-                  class="skill-pill-icon"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">Expo</span>
-              </div>
-            </div>
+      <!-- ===== PORTFOLIO: PINNED SEQUENCE ===== -->
+      <section class="section projects" id="projects" aria-labelledby="proj-title">
+        <div class="shell">
+          <div class="section-head" data-reveal>
+            <h2 class="section-title" id="proj-title" data-i18n="proj-title">
+              Portfolio
+            </h2>
           </div>
-
-          <!-- Backend & Database -->
-          <div class="skill-group scroll-fade" data-category="backend">
-            <span class="skill-group-tag">⚙️ Backend & Database</span>
-            <div class="d-flex flex-wrap justify-content-center gap-2">
-              <div class="skill-pill scroll-scale scroll-stagger-1">
-                <img
-                  src="https://img.icons8.com/color/96/000000/nodejs.png"
-                  alt="Node.js"
-                  class="skill-pill-icon"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">Node.js</span>
-              </div>
-              <div class="skill-pill scroll-scale scroll-stagger-2">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg"
-                  alt="Express.js"
-                  class="skill-pill-icon skill-pill-icon-invert"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">Express.js</span>
-              </div>
-              <div class="skill-pill scroll-scale scroll-stagger-3">
-                <img
-                  src="https://img.icons8.com/color/96/000000/database.png"
-                  alt="Supabase"
-                  class="skill-pill-icon"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">Supabase</span>
-              </div>
-              <div class="skill-pill scroll-scale scroll-stagger-4">
-                <img
-                  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg"
-                  alt="PostgreSQL"
-                  class="skill-pill-icon"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">PostgreSQL</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Data & AI -->
-          <div class="skill-group scroll-fade" data-category="data">
-            <span class="skill-group-tag">🤖 Data & AI</span>
-            <div class="d-flex flex-wrap justify-content-center gap-2">
-              <div class="skill-pill scroll-scale scroll-stagger-1">
-                <img
-                  src="https://img.icons8.com/color/96/000000/python.png"
-                  alt="Python"
-                  class="skill-pill-icon"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">Python</span>
-              </div>
-              <div class="skill-pill scroll-scale scroll-stagger-2">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/0/05/Scikit_learn_logo_small.svg"
-                  alt="Scikit-Learn"
-                  class="skill-pill-icon"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">Scikit-Learn</span>
-              </div>
-              <div class="skill-pill scroll-scale scroll-stagger-3">
-                <img
-                  src="https://img.icons8.com/color/96/000000/artificial-intelligence.png"
-                  alt="LLM API"
-                  class="skill-pill-icon"
-                  loading="lazy"
-                />
-                <span class="skill-pill-label">LLM / AI API</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="bg-black py-5" id="projects">
-      <div class="container">
-        <div class="text-center mb-4 scroll-fade">
-          <h2 class="text-white mb-2" data-i18n="proj-title">Projects</h2>
-          <p class="text-white-50 small mb-0" data-i18n="proj-subtitle">
-            Explore my featured projects
+          <p
+            class="section-intro"
+            data-i18n="proj-intro"
+            data-reveal
+            style="--reveal-delay: 0.08s"
+          >
+            Ten projects, from client websites to machine learning experiments.
           </p>
-        </div>
 
-        <!-- Filter Buttons -->
-        <div
-          class="d-flex flex-wrap justify-content-center gap-2 mb-5 scroll-fade"
-          id="project-filters"
-        >
-          <button
-            class="filter-btn active"
-            data-filter="all"
-            data-i18n="filter-all"
-          >
-            All
-          </button>
-          <button class="filter-btn" data-filter="web" data-i18n="filter-web">
-            Web Development
-          </button>
-          <button class="filter-btn" data-filter="ml" data-i18n="filter-ml">
-            Machine Learning
-          </button>
-          <button
-            class="filter-btn"
-            data-filter="mobile"
-            data-i18n="filter-mobile"
-          >
-            Mobile App
-          </button>
-          <button
-            class="filter-btn"
-            data-filter="data-analyst"
-            data-i18n="filter-data-analyst"
-          >
-            Data Analyst
-          </button>
-        </div>
+          <div class="work-stage" data-work-stage>
+            <div class="work-sequence" data-work-sequence>
+              <div class="work-plate" aria-hidden="true">
+                <div class="plate-head">
+                  <span class="plate-counter" data-work-counter>[01 / 10]</span>
+                  <span class="plate-label" data-i18n="plate-label">Portfolio</span>
+                </div>
+                <div class="plate-frame">
+                  <div class="plate-bar">
+                    <span class="plate-dots"><i></i><i></i><i></i></span>
+                    <span class="plate-url" data-work-url>toelip-interior.vercel.app</span>
+                  </div>
+                  <div class="plate-view">
+                    <img
+                      class="plate-img is-active"
+                      data-work-image="0"
+                      src="assets/preview/toelip-interior.jpg"
+                      alt=""
+                      width="1400"
+                      height="644"
+                      fetchpriority="high"
+                      decoding="async"
+                    />
 
-        <!-- Project Grid -->
-        <div
-          class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"
-          id="project-grid"
-        >
-          <!-- Aspirasi -->
-          <div class="col project-item" data-category="web">
-            <div class="card h-100 shadow-sm project-card">
-              <img
-                src="assets/aspirasi.png"
-                class="card-img-top"
-                alt="Aspirasi Plamongan Sari"
-                loading="lazy"
-              />
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title" data-i18n="proj-aspirasi-title">
-                  Plamongan Sari Village Public Aspiration System
-                </h5>
-                <p class="card-text" data-i18n="proj-aspirasi-desc">
-                  A PHP and Bootstrap-based web platform to digitize and
-                  streamline public feedback for local village administration.
-                </p>
-                <div class="mt-auto d-flex gap-2">
-                  <a
-                    href="https://github.com/Naitkomahli/Web-Aspirasi-Plamongan-Sari"
-                    class="project-btn"
-                    title="GitHub Repository"
-                    target="_blank"
-                  >
                     <img
-                      src="https://img.icons8.com/ios-filled/96/000000/github.png"
-                      alt="GitHub"
-                      style="width: 20px"
+                      class="plate-img"
+                      data-work-image="1"
+                      src="assets/preview/toelip-admin.jpg"
+                      alt=""
+                      width="1400"
+                      height="644"
+                      loading="lazy"
+                      decoding="async"
                     />
-                  </a>
-                  <a
-                    href="https://aspirasiplamongansari.infinityfreeapp.com/login.php"
-                    class="project-btn"
-                    title="Live Domain"
-                    target="_blank"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      fill="currentColor"
-                      class="bi bi-box-arrow-up-right"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-                      />
-                    </svg>
-                  </a>
+
+                    <img
+                      class="plate-img plate-img--contain"
+                      data-work-image="2"
+                      src="assets/preview/spendscan.jpg"
+                      alt=""
+                      width="420"
+                      height="280"
+                      loading="lazy"
+                      decoding="async"
+                    />
+
+                    <img
+                      class="plate-img"
+                      data-work-image="3"
+                      src="assets/preview/jobtracker.jpg"
+                      alt=""
+                      width="1400"
+                      height="634"
+                      loading="lazy"
+                      decoding="async"
+                    />
+
+                    <img
+                      class="plate-img"
+                      data-work-image="4"
+                      src="assets/preview/todo.jpg"
+                      alt=""
+                      width="1400"
+                      height="633"
+                      loading="lazy"
+                      decoding="async"
+                    />
+
+                    <img
+                      class="plate-img"
+                      data-work-image="5"
+                      src="assets/preview/rfm.jpg"
+                      alt=""
+                      width="1400"
+                      height="632"
+                      loading="lazy"
+                      decoding="async"
+                    />
+
+                    <img
+                      class="plate-img"
+                      data-work-image="6"
+                      src="assets/preview/mental-health.jpg"
+                      alt=""
+                      width="1400"
+                      height="626"
+                      loading="lazy"
+                      decoding="async"
+                    />
+
+                    <img
+                      class="plate-img"
+                      data-work-image="7"
+                      src="assets/preview/churn.jpg"
+                      alt=""
+                      width="1400"
+                      height="632"
+                      loading="lazy"
+                      decoding="async"
+                    />
+
+                    <img
+                      class="plate-img plate-img--photo"
+                      data-work-image="8"
+                      src="assets/preview/ikn.jpg"
+                      alt=""
+                      width="1400"
+                      height="933"
+                      loading="lazy"
+                      decoding="async"
+                    />
+
+                    <img
+                      class="plate-img"
+                      data-work-image="9"
+                      src="assets/preview/aspirasi.jpg"
+                      alt=""
+                      width="1400"
+                      height="634"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <div class="plate-progress"><span data-work-progress></span></div>
                 </div>
               </div>
-            </div>
-          </div>
-          <!-- Churn Prediction -->
-          <div class="col project-item" data-category="ml">
-            <div class="card h-100 shadow-sm project-card">
-              <img
-                src="assets/churn_prediction.png"
-                class="card-img-top"
-                alt="Churn Prediction"
-                loading="lazy"
-              />
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title" data-i18n="proj-churn-title">
-                  Churn Prediction using Logistic Regression
-                </h5>
-                <p class="card-text" data-i18n="proj-churn-desc">
-                  A predictive model using Logistic Regression to analyze and
-                  identify customer retention risks.
-                </p>
-                <div class="mt-auto d-flex gap-2">
-                  <a
-                    href="https://github.com/Naitkomahli/churn_prediction"
-                    class="project-btn"
-                    title="GitHub Repository"
+
+              <div class="work-scenes">
+                <div class="work-rail" data-work-rail>
+                  <article
+                    class="work-scene is-current"
+                    data-work-scene="0"
+                    data-work-url="toelip-interior.vercel.app"
                   >
-                    <img
-                      src="https://img.icons8.com/ios-filled/96/000000/github.png"
-                      alt="GitHub"
-                      style="width: 20px"
-                    />
-                  </a>
-                  <a
-                    href="https://churnprediction-mawc9grhsrrxrdu6glzqsn.streamlit.app/"
-                    class="project-btn"
-                    title="Live Domain"
+                    <div class="scene-body">
+                      <p class="work-index" aria-hidden="true">01</p>
+                      <h3 class="work-title" data-i18n="proj-toelip-title">
+                        Toelip Interior: Studio Website
+                      </h3>
+                      <p class="work-desc" data-i18n="proj-toelip-desc">
+                        Company profile for an interior studio in Semarang, with
+                        portfolio work served from Supabase through one cached
+                        endpoint.
+                      </p>
+                      <p class="work-meta">
+                        <span data-i18n="proj-meta-web">Web</span> / Astro,
+                        TypeScript, Supabase, Vercel
+                      </p>
+                      <div class="work-links">
+                        <a
+                          href="https://toelip-interior.vercel.app"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-live">Visit site</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                        <a
+                          href="https://github.com/Naitkomahli/Toelip-Interior"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-repo">Repository</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+
+                    <article
+                    class="work-scene"
+                    data-work-scene="1"
+                    data-work-url="toelip-interior.vercel.app/admin"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      fill="currentColor"
-                      class="bi bi-box-arrow-up-right"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Mental Health -->
-          <div class="col project-item" data-category="ml">
-            <div class="card h-100 shadow-sm project-card">
-              <img
-                src="assets/mental_health.png"
-                class="card-img-top"
-                alt="Mental Health Detection"
-                loading="lazy"
-              />
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title" data-i18n="proj-mental-title">
-                  Mental Health Detection using SVM
-                </h5>
-                <p class="card-text" data-i18n="proj-mental-desc">
-                  Undergraduate thesis project using SVM and SMOTE to classify
-                  student mental health status from imbalanced data.
-                </p>
-                <div class="mt-auto d-flex gap-2">
-                  <a
-                    href="https://github.com/Naitkomahli/Mental-Health-Detection"
-                    class="project-btn"
-                    title="GitHub Repository"
+                    <div class="scene-body">
+                      <p class="work-index" aria-hidden="true">02</p>
+                      <h3 class="work-title" data-i18n="proj-toelip-admin-title">
+                        Toelip Interior: Owner Dashboard
+                      </h3>
+                      <p class="work-desc" data-i18n="proj-toelip-admin-desc">
+                        The owner dashboard behind Toelip: publish portfolio
+                        work, manage categories, and keep the public site in
+                        sync.
+                      </p>
+                      <p class="work-meta">
+                        <span data-i18n="proj-meta-web">Web</span> / Astro,
+                        TypeScript, Supabase
+                      </p>
+                      <div class="work-links">
+                        <a
+                          href="https://toelip-interior.vercel.app/admin"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-live">Visit site</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                        <a
+                          href="https://github.com/Naitkomahli/Toelip-Interior"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-repo">Repository</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+
+                    <article
+                    class="work-scene"
+                    data-work-scene="2"
+                    data-work-url="expo.dev"
                   >
-                    <img
-                      src="https://img.icons8.com/ios-filled/96/000000/github.png"
-                      alt="GitHub"
-                      style="width: 20px"
-                    />
-                  </a>
-                  <a
-                    href="https://mental-health-detection-7.streamlit.app/"
-                    class="project-btn"
-                    title="Live Domain"
+                    <div class="scene-body">
+                      <p class="work-index" aria-hidden="true">03</p>
+                      <h3 class="work-title" data-i18n="proj-spendscan-title">
+                        SpendScan: Receipt Scanner and Expense Tracker
+                      </h3>
+                      <p class="work-desc" data-i18n="proj-spendscan-desc">
+                        A React Native expense tracker that reads receipts with
+                        Groq Vision and turns them into reports.
+                      </p>
+                      <p class="work-meta">
+                        <span data-i18n="proj-meta-mobile">Mobile</span> / React
+                        Native, Expo, Node.js, Supabase
+                      </p>
+                      <div class="work-links">
+                        <a
+                          href="https://expo.dev/artifacts/eas/ah0wFNU2FP6GXv10LL35gPPbThZXiDxkbnzMtAUnnLQ.apk"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-apk">Download APK</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                        <a
+                          href="https://github.com/Naitkomahli/SpendScan"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-repo">Repository</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+
+                    <article
+                    class="work-scene"
+                    data-work-scene="3"
+                    data-work-url="job-tracker-five-kappa-28.vercel.app"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      fill="currentColor"
-                      class="bi bi-box-arrow-up-right"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Analisis Sentiment -->
-          <div class="col project-item" data-category="ml">
-            <div class="card h-100 shadow-sm project-card">
-              <img
-                src="assets/ikn.jpeg"
-                class="card-img-top"
-                alt="Sentiment Analysis IKN"
-                loading="lazy"
-              />
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title" data-i18n="proj-ikn-title">
-                  Sentiment Analysis of IKN Discussions Using Naive Bayes
-                </h5>
-                <p class="card-text" data-i18n="proj-ikn-desc">
-                  Sentiment classification of Twitter data regarding Indonesia's
-                  New Capital (IKN) using the Naive Bayes algorithm.
-                </p>
-                <div class="mt-auto d-flex gap-2">
-                  <a
-                    href="https://github.com/Naitkomahli/sentiment-analysis-ikn-using-naive-bayes-classifier"
-                    class="project-btn"
-                    title="GitHub Repository"
+                    <div class="scene-body">
+                      <p class="work-index" aria-hidden="true">04</p>
+                      <h3 class="work-title" data-i18n="proj-jobtracker-title">
+                        JobTracker: Fullstack Job Application Tracker
+                      </h3>
+                      <p class="work-desc" data-i18n="proj-jobtracker-desc">
+                        A fullstack board for applications, interviews, and
+                        offers, with authentication and a Postgres-backed API.
+                      </p>
+                      <p class="work-meta">
+                        <span data-i18n="proj-meta-web">Web</span> / React,
+                        Express, Supabase
+                      </p>
+                      <div class="work-links">
+                        <a
+                          href="https://job-tracker-five-kappa-28.vercel.app"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-live">Visit site</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+
+                    <article
+                    class="work-scene"
+                    data-work-scene="4"
+                    data-work-url="to-do-list-html-js.vercel.app"
                   >
-                    <img
-                      src="https://img.icons8.com/ios-filled/96/000000/github.png"
-                      alt="GitHub"
-                      style="width: 20px"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- To Do List Website -->
-          <div class="col project-item" data-category="web">
-            <div class="card h-100 shadow-sm project-card">
-              <img
-                src="assets/to_do_list.png"
-                class="card-img-top"
-                alt="To Do List"
-                loading="lazy"
-              />
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title" data-i18n="proj-todo-title">
-                  To Do List Website
-                </h5>
-                <p class="card-text" data-i18n="proj-todo-desc">
-                  A web-based to-do list application with Google authentication,
-                  daily-reset checklists, and a weekly habit tracker.
-                </p>
-                <div class="mt-auto d-flex gap-2">
-                  <a
-                    href="https://github.com/Naitkomahli/to-do-list-HTML-JS"
-                    class="project-btn"
-                    title="GitHub Repository"
-                    target="_blank"
+                    <div class="scene-body">
+                      <p class="work-index" aria-hidden="true">05</p>
+                      <h3 class="work-title" data-i18n="proj-todo-title">
+                        To Do List Website
+                      </h3>
+                      <p class="work-desc" data-i18n="proj-todo-desc">
+                        A small vanilla JavaScript task list with local
+                        persistence, filters, and keyboard-friendly controls.
+                      </p>
+                      <p class="work-meta">
+                        <span data-i18n="proj-meta-web">Web</span> / HTML, CSS,
+                        JavaScript
+                      </p>
+                      <div class="work-links">
+                        <a
+                          href="https://to-do-list-html-js.vercel.app/"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-live">Visit site</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+
+                    <article
+                    class="work-scene"
+                    data-work-scene="5"
+                    data-work-url="customer-segmentation.streamlit.app"
                   >
-                    <img
-                      src="https://img.icons8.com/ios-filled/96/000000/github.png"
-                      alt="GitHub"
-                      style="width: 20px"
-                    />
-                  </a>
-                  <a
-                    href="https://to-do-list-html-js.vercel.app/"
-                    class="project-btn"
-                    title="Live Domain"
-                    target="_blank"
+                    <div class="scene-body">
+                      <p class="work-index" aria-hidden="true">06</p>
+                      <h3 class="work-title" data-i18n="proj-rfm-title">
+                        Customer Segmentation: RFM + K-Means
+                      </h3>
+                      <p class="work-desc" data-i18n="proj-rfm-desc">
+                        Segmented 5,878 customers across 800K retail
+                        transactions with RFM and K-Means.
+                      </p>
+                      <p class="work-meta">
+                        <span data-i18n="proj-meta-ml">Machine Learning</span> /
+                        Python, pandas, scikit-learn
+                      </p>
+                      <div class="work-links">
+                        <a
+                          href="https://customer-segmentation-use-rfm-analysis-with-k-means-clustering.streamlit.app/"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-live">Visit site</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                        <a
+                          href="https://github.com/Naitkomahli/Customer-Segmentation-use-RFM-Analysis-with-K-Means-Clustering"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-repo">Repository</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+
+                    <article
+                    class="work-scene"
+                    data-work-scene="6"
+                    data-work-url="mental-health-detection-7.streamlit.app"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      fill="currentColor"
-                      class="bi bi-box-arrow-up-right"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- SpendScan -->
-          <div class="col project-item" data-category="mobile">
-            <div class="card h-100 shadow-sm project-card">
-              <img
-                src="assets/SpendScan.jpeg"
-                class="card-img-top"
-                alt="SpendScan"
-                loading="lazy"
-              />
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title" data-i18n="proj-spendscan-title">
-                  SpendScan — AI-Powered Expense Tracker
-                </h5>
-                <p class="card-text" data-i18n="proj-spendscan-desc">
-                  A mobile expense tracker built with React Native & Expo. Scan
-                  receipts with your camera — AI (Groq Vision) automatically
-                  reads items & prices. Features dashboard, transaction history,
-                  financial reports, and secure authentication.
-                </p>
-                <div class="mt-auto d-flex gap-2">
-                  <a
-                    href="https://github.com/Naitkomahli/SpendScan"
-                    class="project-btn"
-                    title="GitHub Repository"
-                    target="_blank"
+                    <div class="scene-body">
+                      <p class="work-index" aria-hidden="true">07</p>
+                      <h3 class="work-title" data-i18n="proj-mental-title">
+                        Mental Health Detection using SVM
+                      </h3>
+                      <p class="work-desc" data-i18n="proj-mental-desc">
+                        A Streamlit app that screens mental health risk from
+                        questionnaire answers with a support vector machine.
+                      </p>
+                      <p class="work-meta">
+                        <span data-i18n="proj-meta-ml">Machine Learning</span> /
+                        Python, scikit-learn, Streamlit
+                      </p>
+                      <div class="work-links">
+                        <a
+                          href="https://mental-health-detection-7.streamlit.app/"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-live">Visit site</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+
+                    <article
+                    class="work-scene"
+                    data-work-scene="7"
+                    data-work-url="churnprediction.streamlit.app"
                   >
-                    <img
-                      src="https://img.icons8.com/ios-filled/96/000000/github.png"
-                      alt="GitHub"
-                      style="width: 20px"
-                    />
-                  </a>
-                  <a
-                    href="https://expo.dev/artifacts/eas/ah0wFNU2FP6GXv10LL35gPPbThZXiDxkbnzMtAUnnLQ.apk"
-                    class="project-btn"
-                    title="Download APK"
-                    target="_blank"
+                    <div class="scene-body">
+                      <p class="work-index" aria-hidden="true">08</p>
+                      <h3 class="work-title" data-i18n="proj-churn-title">
+                        Churn Prediction using Logistic Regression
+                      </h3>
+                      <p class="work-desc" data-i18n="proj-churn-desc">
+                        Predicts customer churn from account behaviour and shows
+                        which signals push each customer toward leaving.
+                      </p>
+                      <p class="work-meta">
+                        <span data-i18n="proj-meta-ml">Machine Learning</span> /
+                        Python, scikit-learn, Streamlit
+                      </p>
+                      <div class="work-links">
+                        <a
+                          href="https://churnprediction-mawc9grhsrrxrdu6glzqsn.streamlit.app/"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-live">Visit site</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+
+                    <article
+                    class="work-scene"
+                    data-work-scene="8"
+                    data-work-url="github.com/Naitkomahli"
                   >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      fill="currentColor"
-                      class="bi bi-box-arrow-up-right"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- JobTracker -->
-          <div class="col project-item" data-category="web">
-            <div class="card h-100 shadow-sm project-card">
-              <img
-                src="assets/JobTracker.png"
-                class="card-img-top"
-                alt="JobTracker"
-                loading="lazy"
-              />
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title" data-i18n="proj-jobtracker-title">
-                  JobTracker — Fullstack Job Application Tracker
-                </h5>
-                <p class="card-text" data-i18n="proj-jobtracker-desc">
-                  A web app to track job applications with auth, CRUD, status
-                  badges, and an elapsed-time "Age" tracker. Built with React +
-                  Vite, Express, and PostgreSQL (Supabase), deployed on Vercel.
-                </p>
-                <div class="mt-auto d-flex gap-2">
-                  <a
-                    href="https://github.com/Naitkomahli/Job_tracker"
-                    class="project-btn"
-                    title="GitHub Repository"
-                    target="_blank" 
+                    <div class="scene-body">
+                      <p class="work-index" aria-hidden="true">09</p>
+                      <h3 class="work-title" data-i18n="proj-ikn-title">
+                        Sentiment Analysis of IKN Discussions Using Naive Bayes
+                      </h3>
+                      <p class="work-desc" data-i18n="proj-ikn-desc">
+                        Classified public discussion about Indonesia's new
+                        capital with a Naive Bayes pipeline, from collection to
+                        evaluation.
+                      </p>
+                      <p class="work-meta">
+                        <span data-i18n="proj-meta-ml">Machine Learning</span> /
+                        Python, Naive Bayes, NLP
+                      </p>
+                      <div class="work-links">
+                        <a
+                          href="https://github.com/Naitkomahli/sentiment-analysis-ikn-using-naive-bayes-classifier"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-repo">Repository</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+
+                    <article
+                    class="work-scene"
+                    data-work-scene="9"
+                    data-work-url="aspirasiplamongansari.infinityfreeapp.com"
                   >
-                    <img
-                      src="https://img.icons8.com/ios-filled/96/000000/github.png"
-                      alt="GitHub"
-                      style="width: 20px"
-                    />
-                  </a>
-                  <a
-                    href="https://job-tracker-five-kappa-28.vercel.app"
-                    class="project-btn"
-                    title="Live Demo"
-                    target="_blank"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      fill="currentColor"
-                      class="bi bi-box-arrow-up-right"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Customer Segmentation RFM -->
-          <div class="col project-item" data-category="data-analyst ml">
-            <div class="card h-100 shadow-sm project-card">
-              <img
-                src="assets/rfm.png"
-                class="card-img-top"
-                alt="Customer Segmentation RFM"
-                loading="lazy"
-              />
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title" data-i18n="proj-rfm-title">
-                  Customer Segmentation — RFM + K-Means
-                </h5>
-                <p class="card-text" data-i18n="proj-rfm-desc">
-                  Segmented 5,878 customers via RFM analysis + K-Means clustering
-                  (k=4) on 800K+ retail transactions. Profiled Champions, Loyal,
-                  At Risk, and Lost segments for business action.
-                </p>
-                <div class="mt-auto d-flex gap-2">
-                  <a
-                    href="https://github.com/Naitkomahli/Customer-Segmentation-use-RFM-Analysis-with-K-Means-Clustering"
-                    class="project-btn"
-                    title="GitHub Repository"
-                    target="_blank"
-                  >
-                    <img
-                      src="https://img.icons8.com/ios-filled/96/000000/github.png"
-                      alt="GitHub"
-                      style="width: 20px"
-                    />
-                  </a>
-                  <a
-                    href="https://customer-segmentation-use-rfm-analysis-with-k-means-clustering.streamlit.app/"
-                    class="project-btn"
-                    title="Live Demo"
-                    target="_blank"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="18"
-                      height="18"
-                      fill="currentColor"
-                      class="bi bi-box-arrow-up-right"
-                      viewBox="0 0 16 16"
-                    >
-                      <path
-                        fill-rule="evenodd"
-                        d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"
-                      />
-                      <path
-                        fill-rule="evenodd"
-                        d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"
-                      />
-                    </svg>
-                  </a>
+                    <div class="scene-body">
+                      <p class="work-index" aria-hidden="true">10</p>
+                      <h3 class="work-title" data-i18n="proj-aspirasi-title">
+                        Plamongan Sari Village Public Aspiration System
+                      </h3>
+                      <p class="work-desc" data-i18n="proj-aspirasi-desc">
+                        A PHP and Bootstrap platform that digitizes public
+                        feedback for a village administration.
+                      </p>
+                      <p class="work-meta">
+                        <span data-i18n="proj-meta-web">Web</span> / PHP,
+                        Bootstrap, MySQL
+                      </p>
+                      <div class="work-links">
+                        <a
+                          href="https://aspirasiplamongansari.infinityfreeapp.com/login.php"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-live">Visit site</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                        <a
+                          href="https://github.com/Naitkomahli/Web-Aspirasi-Plamongan-Sari"
+                          target="_blank"
+                          rel="noopener"
+                        >
+                          <span data-i18n="proj-link-repo">Repository</span>
+                          <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                            <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                          </svg>
+                        </a>
+                      </div>
+                    </div>
+                  </article>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="py-5" id="contact">
-      <div class="container">
-        <div class="text-center mb-5 scroll-fade">
-          <h2 class="fw-bold" data-i18n="contact-title">Contact Me</h2>
-          <p style="color: var(--text-muted)" data-i18n="contact-subtitle">
-            Feel free to reach out for collaborations or just a friendly hello!
-          </p>
-        </div>
-
-        <div class="row g-5">
-          <!-- Contact Form (Left) -->
-          <div class="col-lg-7 scroll-slide-left">
-            <div class="contact-form-card p-4 p-md-5 h-100">
-              <h4 class="fw-bold mb-4" data-i18n="contact-form-title">
-                Send a Message
-              </h4>
-              <form
-                action="https://formsubmit.co/ilhamoktianramadhan@gmail.com"
-                method="POST"
+      <!-- ===== CONTACT ===== -->
+      <section class="section contact" id="contact" aria-labelledby="contact-title">
+        <div class="shell contact-grid">
+          <div class="contact-copy">
+            <div class="section-head" data-reveal>
+              <h2 class="section-title" id="contact-title" data-i18n="contact-title">
+                Tell me what you are building.
+              </h2>
+            </div>
+            <a class="contact-email" data-reveal style="--reveal-delay: 0.06s" href="mailto:ilhamoktianramadhan@gmail.com">
+              ilhamoktianramadhan@gmail.com
+            </a>
+            <div class="contact-links" data-reveal style="--reveal-delay: 0.12s">
+              <a href="https://github.com/Naitkomahli" target="_blank" rel="noopener">
+                GitHub
+                <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                  <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                </svg>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ilham-oktian-0a32a6298"
+                target="_blank"
+                rel="noopener"
               >
-                <!-- Honeypot Spam Protection -->
-                <input type="text" name="_honey" style="display: none" />
-                <!-- Auto Response -->
+                LinkedIn
+                <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                  <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                </svg>
+              </a>
+              <a href="https://wa.me/6285728030657" target="_blank" rel="noopener">
+                WhatsApp
+                <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                  <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/naitkomahli/"
+                target="_blank"
+                rel="noopener"
+              >
+                Instagram
+                <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 16 16" width="12" height="12">
+                  <path d="M5 11 11 5M6 5h5v5" fill="none" stroke="currentColor" stroke-width="1.2" />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-form" data-reveal style="--reveal-delay: 0.1s">
+            <h3 class="form-title" data-i18n="contact-form-title">Send a message</h3>
+            <form action="https://formsubmit.co/ilhamoktianramadhan@gmail.com" method="POST">
+              <input type="text" name="_honey" style="display: none" />
+              <input
+                type="hidden"
+                name="_autoresponse"
+                value=""
+                data-i18n-value="contact-autoresponse"
+              />
+
+              <div class="field">
+                <label for="name" data-i18n="contact-name-label">Your name</label>
                 <input
-                  type="hidden"
-                  name="_autoresponse"
-                  value=""
-                  data-i18n-value="contact-autoresponse"
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="Enter your full name"
+                  data-i18n-placeholder="contact-name-placeholder"
+                  autocomplete="name"
+                  required
                 />
-
-                <div class="mb-3">
-                  <label
-                    for="name"
-                    class="form-label form-label-dark"
-                    data-i18n="contact-name-label"
-                    >Your Name</label
-                  >
-                  <input
-                    type="text"
-                    name="name"
-                    class="form-control form-control-dark border-0 py-2"
-                    id="name"
-                    placeholder="Enter your full name"
-                    data-i18n-placeholder="contact-name-placeholder"
-                    required
-                  />
-                </div>
-                <div class="mb-3">
-                  <label
-                    for="email"
-                    class="form-label form-label-dark"
-                    data-i18n="contact-email-label"
-                    >Your Email</label
-                  >
-                  <input
-                    type="email"
-                    name="email"
-                    class="form-control form-control-dark border-0 py-2"
-                    id="email"
-                    placeholder="name@example.com"
-                    data-i18n-placeholder="contact-email-placeholder"
-                    required
-                  />
-                </div>
-                <div class="mb-4">
-                  <label
-                    for="message"
-                    class="form-label form-label-dark"
-                    data-i18n="contact-msg-label"
-                    >Message</label
-                  >
-                  <textarea
-                    name="message"
-                    class="form-control form-control-dark border-0"
-                    id="message"
-                    rows="5"
-                    placeholder="Let's build something amazing..."
-                    data-i18n-placeholder="contact-msg-placeholder"
-                    required
-                  ></textarea>
-                </div>
-                <button
-                  type="submit"
-                  class="btn btn-accent px-4 py-2 rounded-pill fw-bold w-100 mt-auto"
-                  data-i18n="contact-send-btn"
-                >
-                  Send Message
-                </button>
-              </form>
-            </div>
-          </div>
-
-          <!-- Contact Cards & Socials (Right) -->
-          <div class="col-lg-5 scroll-slide-right">
-            <div class="d-flex flex-column h-100 justify-content-center">
-              <h4 class="fw-bold mb-4" data-i18n="contact-direct">
-                Direct Contact
-              </h4>
-              <div class="row g-3 mb-5 text-center">
-                <div class="col-6 scroll-scale scroll-stagger-1">
-                  <a
-                    href="https://wa.me/6285728030657"
-                    class="text-decoration-none"
-                    target="_blank"
-                  >
-                    <div class="card border-0 py-4 contact-card h-100">
-                      <img
-                        src="https://img.icons8.com/color/96/000000/whatsapp--v1.png"
-                        alt="WhatsApp"
-                        class="mx-auto mb-3"
-                        style="width: 45px"
-                      />
-                      <h6 class="contact-card-label fw-bold mb-0">WhatsApp</h6>
-                    </div>
-                  </a>
-                </div>
-                <div class="col-6 scroll-scale scroll-stagger-2">
-                  <a
-                    href="https://mail.google.com/mail/?view=cm&fs=1&to=ilhamoktianramadhan@gmail.com"
-                    class="text-decoration-none"
-                    target="_blank"
-                  >
-                    <div class="card border-0 py-4 contact-card h-100">
-                      <img
-                        src="https://img.icons8.com/color/96/000000/gmail-new.png"
-                        alt="Email"
-                        class="mx-auto mb-3"
-                        style="width: 45px"
-                      />
-                      <h6 class="contact-card-label fw-bold mb-0">Email</h6>
-                    </div>
-                  </a>
-                </div>
               </div>
 
-              <h4 class="fw-bold mb-4" data-i18n="contact-social">
-                Social Media
-              </h4>
-              <div class="d-flex flex-column align-items-start gap-3 ms-1">
-                <a
-                  href="https://www.linkedin.com/in/ilham-oktian-0a32a6298"
-                  class="text-decoration-none social-link d-flex align-items-center gap-2 scroll-slide-left scroll-stagger-1"
-                  target="_blank"
-                >
-                  <div
-                    class="social-icon-wrap rounded-circle d-flex align-items-center justify-content-center"
-                    style="width: 38px; height: 38px"
-                  >
-                    <img
-                      src="https://img.icons8.com/color/96/000000/linkedin.png"
-                      alt="LinkedIn"
-                      style="width: 20px"
-                    />
-                  </div>
-                  <span class="social-text ms-2 fw-semibold">LinkedIn</span>
-                </a>
-                <a
-                  href="https://github.com/Naitkomahli"
-                  class="text-decoration-none social-link d-flex align-items-center gap-2 scroll-slide-left scroll-stagger-2"
-                  target="_blank"
-                >
-                  <div
-                    class="social-icon-wrap rounded-circle d-flex align-items-center justify-content-center"
-                    style="width: 38px; height: 38px"
-                  >
-                    <img
-                      src="https://img.icons8.com/ios-filled/96/000000/github.png"
-                      alt="GitHub"
-                      class="social-gh-icon"
-                      style="width: 20px"
-                    />
-                  </div>
-                  <span class="social-text ms-2 fw-semibold">GitHub</span>
-                </a>
-                <a
-                  href="https://www.instagram.com/naitkomahli/"
-                  class="text-decoration-none social-link d-flex align-items-center gap-2 scroll-slide-left scroll-stagger-3"
-                  target="_blank"
-                >
-                  <div
-                    class="social-icon-wrap rounded-circle d-flex align-items-center justify-content-center"
-                    style="width: 38px; height: 38px"
-                  >
-                    <img
-                      src="https://img.icons8.com/color/96/000000/instagram-new.png"
-                      alt="Instagram"
-                      style="width: 20px"
-                    />
-                  </div>
-                  <span class="social-text ms-2 fw-semibold">Instagram</span>
-                </a>
+              <div class="field">
+                <label for="email" data-i18n="contact-email-label">Your email</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="name@example.com"
+                  data-i18n-placeholder="contact-email-placeholder"
+                  autocomplete="email"
+                  required
+                />
               </div>
-            </div>
+
+              <div class="field">
+                <label for="message" data-i18n="contact-msg-label">Message</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  rows="5"
+                  placeholder="Tell me about the project or role you have in mind"
+                  data-i18n-placeholder="contact-msg-placeholder"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="submit-btn" data-i18n="contact-send-btn">
+                Send message
+              </button>
+            </form>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- Footer -->
-    <footer class="text-center py-4 mt-5">
-      <div class="container">
-        <p class="mb-1" data-i18n="footer-copyright">
-          &copy; 2026 Ilham Oktian Ramadhan. All rights reserved.
-        </p>
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <p data-i18n="footer-copyright">&copy; 2026 Ilham Oktian Ramadhan</p>
+        <p data-i18n="footer-location">Indonesia</p>
+        <a href="#home" data-i18n="footer-top">Back to top</a>
       </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <a
-      href="#home"
-      class="back-to-top shadow d-flex align-items-center justify-content-center text-decoration-none"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        fill="currentColor"
-        class="bi bi-arrow-up text-white"
-        viewBox="0 0 16 16"
-      >
-        <path
-          fill-rule="evenodd"
-          d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"
-        />
-      </svg>
-    </a>
-
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Main Script -->
     <script src="main.js"></script>
   </body>
 </html>
