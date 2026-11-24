@@ -383,26 +383,6 @@ summary {
 
 /* ===== NAV ===== */
 
-.scroll-meter {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 700;
-  height: 2px;
-  pointer-events: none;
-}
-
-.scroll-meter span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--accent-strong));
-  transform: scaleX(0);
-  transform-origin: left center;
-  will-change: transform;
-}
-
 .site-nav {
   position: fixed;
   inset: 0 0 auto 0;
@@ -714,34 +694,6 @@ summary {
   font-size: clamp(0.9375rem, 1.1vw, 1.0625rem);
   line-height: 1.75;
   color: var(--muted);
-}
-
-.text-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 44px;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  color: var(--ink);
-  text-decoration: underline;
-  text-decoration-color: var(--wire-strong);
-  text-underline-offset: 6px;
-  transition: color 0.2s var(--ease), text-decoration-color 0.2s var(--ease);
-}
-
-.text-link:hover,
-.text-link:focus-visible {
-  color: var(--accent);
-  text-decoration-color: var(--accent);
-}
-
-.text-link .icon {
-  transition: transform 0.2s var(--ease);
-}
-
-.text-link:hover .icon {
-  transform: translateY(3px);
 }
 
 .hero-portrait {
@@ -1671,8 +1623,9 @@ summary {
   }
 
   .hero-portrait {
-    justify-self: start;
-    width: min(42vw, 26svh, 160px);
+    order: -1;
+    justify-self: center;
+    width: min(46vw, 28svh, 180px);
   }
 
   .hero-portrait::before {
@@ -1882,7 +1835,7 @@ summary {
 
 @media (max-width: 359px) {
   .hero-portrait {
-    width: min(38vw, 24svh, 130px);
+    width: min(42vw, 26svh, 140px);
   }
 }
 
@@ -1915,12 +1868,9 @@ summary {
   }
 
   .hero-portrait {
+    order: 0;
     justify-self: end;
     width: min(26vw, 46svh, 130px);
-  }
-
-  .hero-link {
-    font-size: 0.875rem;
   }
 
   .work-sequence {

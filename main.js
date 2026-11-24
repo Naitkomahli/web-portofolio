@@ -226,7 +226,6 @@
   const toggle = document.getElementById("nav-toggle");
   const menu = document.getElementById("nav-menu");
   const links = Array.from(document.querySelectorAll(".nav-link"));
-  const meter = document.querySelector("[data-scroll-meter]");
   const stars = document.querySelector(".hero-stars");
   const copy = document.querySelector(".hero-copy");
   const portrait = document.querySelector(".hero-portrait");
@@ -341,12 +340,6 @@
     }
     lastY = y;
 
-    if (meter) {
-      const max = document.documentElement.scrollHeight - vh;
-      const ratio = max > 0 ? Math.min(1, Math.max(0, y / max)) : 0;
-      meter.style.transform = `scaleX(${ratio.toFixed(4)})`;
-    }
-
     // Scene 1: the field lags, the portrait sinks, the copy lifts away.
     const heroHeight = hero ? hero.offsetHeight || vh : vh;
     const progress = Math.min(1, Math.max(0, y / heroHeight));
@@ -363,7 +356,8 @@
         copy.style.transform = `translate3d(0, ${(-48 * progress).toFixed(2)}px, 0)`;
       }
       if (portrait) {
-        portrait.style.transform = `translate3d(0, ${(64 * progress).toFixed(2)}px, 0)`;
+        const drift = desktop.matches ? 64 : -24;
+        portrait.style.transform = `translate3d(0, ${(drift * progress).toFixed(2)}px, 0)`;
       }
     }
 
@@ -619,7 +613,6 @@
       "hero-subtitle": "Junior Web Developer / Machine Learning Enthusiast",
       "hero-desc":
         "Crafting elegant, functional, and user-centric web experiences with a focus on clean code.",
-      "hero-cta": "Explore the portfolio",
       "about-title": "About",
       "about-lead":
         "I am a Junior Web Developer and Machine Learning Enthusiast based in Indonesia.",
@@ -724,7 +717,6 @@
       "hero-subtitle": "Junior Web Developer / Penggemar Machine Learning",
       "hero-desc":
         "Membangun pengalaman web yang elegan, fungsional, dan berpusat pada pengguna dengan fokus pada kode yang bersih.",
-      "hero-cta": "Jelajahi portofolio",
       "about-title": "Tentang",
       "about-lead":
         "Saya adalah Junior Web Developer dan Penggemar Machine Learning yang berbasis di Indonesia.",

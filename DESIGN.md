@@ -61,7 +61,7 @@ Tidak ada font display baru. Kemewahan dibentuk oleh ukuran, jarak, dan jumlah k
 ## Komposisi
 
 - Nav: satu dock kaca mengambang, lebar maksimal 1040px, tinggi 60px, berjarak 12px dari atas. Brand "Ilham Oktian" di kiri, link dan toggle EN/ID di kanan. Dock memakai `backdrop-filter: blur(24px) saturate(180%)`, border tipis, dan garis specular di tepi atas. Tidak ada penanda `[IO]`.
-- Hero: nama besar dua baris, peran mono, satu paragraf, satu text link, foto bulat dengan cincin tipis. Stage 200vh dengan hero sticky 100svh.
+- Hero: nama besar dua baris, peran mono, satu paragraf, foto bulat dengan cincin tipis. Stage 200vh dengan hero sticky 100svh. Di layar sempit, foto tampil lebih dulu di atas nama, terpusat, dengan lebar maksimal 180px; copy teks berada di bawahnya.
 - About: menutup hero seperti tirai, latar solid, dua kolom teks.
 - Experience: rel kiri berisi label kelompok, timeline kanan dengan garis rambut dan titik indigo.
 - Toolkit: tiga kolom, label mono, pill berikon.
@@ -78,7 +78,7 @@ Tidak ada font display baru. Kemewahan dibentuk oleh ukuran, jarak, dan jumlah k
 - Loader lightsaber tetap menjadi pembuka. Setelah loader selesai, `body.is-ready` memicu koreografi: dua baris nama naik dari mask, lalu paragraf membuka lewat `clip-path`, dan foto profil membuka sebagai lingkaran.
 - `.hero-stage` setinggi 200vh. `.hero` sticky di `top: 0`, tinggi 100svh.
 - About setinggi 100vh dengan latar solid, jadi ia menutup hero tepat saat pin selesai.
-- Selama 100vh pertama, bintang turun 140px, copy naik 48px, dan foto turun 64px. Nama ikut bergerak bersama copy.
+- Selama 100vh pertama, bintang turun 140px, copy naik 48px, dan foto turun 64px di layar lebar. Di layar sempit foto naik 24px agar tidak menabrak teks yang ikut naik. Nama ikut bergerak bersama copy.
 - Tidak ada fade opacity pada teks. Teks sudah terbaca sebelum gerakan dimulai.
 
 ### Pita kapabilitas
@@ -98,7 +98,6 @@ Tidak ada font display baru. Kemewahan dibentuk oleh ukuran, jarak, dan jumlah k
 
 ### Reveal dan navigasi
 
-- Scroll progress bar 2px di tepi atas halaman mengikuti posisi baca.
 - Dock navigasi bersembunyi saat scroll turun lebih dari 6px dan kembali saat scroll naik. Dock juga kembali saat ada fokus keyboard di dalamnya.
 - Specular kaca mengikuti pointer di dalam dock. Di perangkat sentuh, lapisan specular tidak muncul agar permukaan tetap bersih.
 - Section head, paragraf About, baris Experience, grup Toolkit, intro Portfolio, dan Contact memakai `data-reveal`: `clip-path` membuka dari bawah plus translasi 22px. Tidak ada fade opacity.
