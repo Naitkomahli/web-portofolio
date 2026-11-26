@@ -1,6 +1,17 @@
-# Web Portfolio
+# Web Portfolio — Ilham Oktian Ramadhan
 
-Website portofolio pribadi: HTML, CSS, dan JavaScript tanpa framework.
+Portfolio pribadi bilingual (EN/ID) untuk rekruter dan calon klien. Satu halaman, tanpa framework, berfokus pada kecepatan dan aksesibilitas.
+
+Repo: https://github.com/Naitkomahli/web-portofolio
+
+## Isi
+
+- Hero dengan loader lightsaber dan foto profil
+- About, Experience, Toolkit
+- Portfolio: sepuluh proyek dengan plate sticky dan transisi saat scroll
+- Contact: form via FormSubmit
+- Toggle bahasa EN/ID tanpa reload
+- Mendukung `prefers-reduced-motion`, skip link, focus ring, dan target sentuh 44px
 
 ## Struktur Workspace
 
@@ -36,9 +47,10 @@ Buka `index.html` langsung di browser, atau jalankan static server dari folder i
 py -3 -m http.server 8123
 ```
 
+Lalu buka `http://localhost:8123`.
+
 ## Tech Stack
 
-- HTML5
-- CSS3 (sticky, grid, custom properties, backdrop-filter)
-- JavaScript vanilla (IntersectionObserver, requestAnimationFrame)
-- FormSubmit untuk form kontak
+Proyek ini: HTML5, CSS3, JavaScript vanilla (IntersectionObserver, requestAnimationFrame), FormSubmit untuk form kontak.
+
+Toolkit yang ditampilkan di halaman: HTML5, CSS3, JavaScript, Bootstrap, React.js, React Native, Expo, Node.js, Express.js, Supabase, PostgreSQL, Python.
